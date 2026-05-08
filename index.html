@@ -4,11 +4,11 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="theme-color" content="#019AB3">
-<meta name="description" content="《金融AI革命：智慧轉型之路》互動讀書心得 — Theodora Lau 2025 年新作的台灣銀行業實踐筆記。">
-<meta property="og:title" content="《金融AI革命》互動讀書心得">
+<meta name="description" content="《金融AI革命：智慧轉型之路》讀書心得 — Theodora Lau 2025 年新作的台灣銀行業實踐筆記。">
+<meta property="og:title" content="《金融AI革命》讀書心得">
 <meta property="og:description" content="七大支柱、六大場景、第 6-7 章深度精讀，與台灣銀行業的五項落地建議。">
 <meta property="og:type" content="article">
-<title>《金融AI革命》互動讀書心得 — Banking on (Artificial) Intelligence</title>
+<title>《金融AI革命》讀書心得 — Banking on (Artificial) Intelligence</title>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -106,11 +106,9 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
   color: var(--deep); letter-spacing: .02em;
   display: flex; align-items: center; gap: 10px;
 }
-.nav-brand-icon {
-  width: 28px; height: 28px; border-radius: 6px;
-  background: linear-gradient(135deg, var(--primary), var(--deep));
-  display: grid; place-items: center; color: white; font-weight: 900;
-  font-size: 13px; box-shadow: var(--shadow-sm);
+.nav-brand-bar {
+  width: 4px; height: 18px; border-radius: 2px;
+  background: linear-gradient(180deg, var(--primary), var(--deep));
 }
 .nav-links { display: flex; gap: 4px; }
 .nav-links a {
@@ -123,7 +121,16 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
   display: none; width: 40px; height: 40px; border-radius: 8px;
   align-items: center; justify-content: center;
 }
-.nav-toggle svg { width: 22px; height: 22px; stroke: var(--ink); }
+.nav-toggle-bars,
+.nav-toggle-bars::before,
+.nav-toggle-bars::after {
+  display: block; width: 18px; height: 1.5px;
+  background: var(--ink); border-radius: 1px;
+  position: relative; transition: all .25s;
+}
+.nav-toggle-bars::before, .nav-toggle-bars::after { content: ""; position: absolute; left: 0; }
+.nav-toggle-bars::before { top: -6px; }
+.nav-toggle-bars::after { top: 6px; }
 @media (max-width: 880px) {
   .nav-links {
     position: fixed; top: var(--nav-h); left: 0; right: 0;
@@ -229,7 +236,8 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
   box-shadow: var(--shadow-md); transition: all .25s;
 }
 .hero-cta:hover { transform: translateY(-2px); box-shadow: var(--shadow-lg); color: white; background: var(--deep); }
-.hero-cta svg { width: 18px; height: 18px; }
+.hero-cta .arrow { font-size: 18px; transition: transform .25s; }
+.hero-cta:hover .arrow { transform: translateX(4px); }
 .scroll-hint {
   position: absolute; bottom: 30px; left: 50%; transform: translateX(-50%);
   font-size: 11px; letter-spacing: .3em; color: var(--gray-2);
@@ -371,14 +379,24 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
 .thesis-card:nth-child(3)::before { background: var(--deep); }
 .thesis-card:hover { transform: translateY(-6px); box-shadow: var(--shadow-lg); }
 .thesis-card:hover::before { width: 6px; }
-.thesis-icon {
-  width: 48px; height: 48px; border-radius: 12px;
-  display: grid; place-items: center; margin-bottom: 18px;
-  background: var(--primary-bg); color: var(--primary-dk);
+.thesis-num {
+  font-family: var(--serif); font-weight: 900;
+  font-size: 38px; line-height: 1; letter-spacing: -0.02em;
+  margin-bottom: 16px;
+  background: linear-gradient(135deg, var(--primary), var(--deep));
+  -webkit-background-clip: text; background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
-.thesis-card:nth-child(2) .thesis-icon { background: var(--secondary-bg); color: var(--secondary); }
-.thesis-card:nth-child(3) .thesis-icon { background: var(--deep-bg); color: var(--deep); }
-.thesis-icon svg { width: 24px; height: 24px; }
+.thesis-card:nth-child(2) .thesis-num {
+  background: linear-gradient(135deg, var(--secondary), var(--primary-dk));
+  -webkit-background-clip: text; background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.thesis-card:nth-child(3) .thesis-num {
+  background: linear-gradient(135deg, var(--deep), #1a5dc4);
+  -webkit-background-clip: text; background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
 .thesis-card h3 { font-size: 19px; font-weight: 700; margin-bottom: 12px; color: var(--ink); }
 .thesis-card p { color: var(--gray-1); font-size: 15px; line-height: 1.75; }
 
@@ -693,9 +711,12 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
   display: grid; place-items: center; transition: all .3s;
   flex-shrink: 0;
 }
-.chapter-toggle svg { width: 18px; height: 18px; transition: transform .3s; }
+.chapter-toggle .plus {
+  font-size: 22px; font-weight: 300; line-height: 1;
+  transition: transform .3s;
+}
 .chapter-item.open .chapter-toggle { background: var(--primary); color: white; }
-.chapter-item.open .chapter-toggle svg { transform: rotate(45deg); }
+.chapter-item.open .chapter-toggle .plus { transform: rotate(45deg); }
 .chapter-detail {
   max-height: 0; overflow: hidden; transition: max-height .5s cubic-bezier(.2,.8,.2,1);
 }
@@ -815,7 +836,287 @@ footer {
 }
 .fab-back-top.show { opacity: 1; pointer-events: auto; }
 .fab-back-top:hover { background: var(--deep); transform: translateY(-3px); }
-.fab-back-top svg { width: 20px; height: 20px; }
+.fab-back-top { font-size: 18px; font-weight: 600; line-height: 1; }
+
+/* ===================== 手機優化（重做版：易讀為先） ===================== */
+@media (max-width: 768px) {
+  :root { --nav-h: 56px; }
+
+  body { font-size: 16px; line-height: 1.85; }
+
+  /* Section 通用：給足左右呼吸 */
+  .section { padding: 56px 22px; }
+  .section-header { margin-bottom: 32px; }
+  .section-eyebrow { font-size: 11px; padding: 5px 12px; letter-spacing: .12em; margin-bottom: 14px; }
+  .section-title { font-size: 26px; line-height: 1.25; margin-bottom: 12px; letter-spacing: -0.005em; }
+  .section-sub { font-size: 14.5px; line-height: 1.75; }
+
+  /* Nav */
+  .nav { padding: 0 18px; }
+  .nav-brand { font-size: 14px; }
+  .nav-brand-bar { height: 16px; }
+  .nav-toggle { width: 36px; height: 36px; }
+  .progress-bar { height: 2px; }
+
+  /* ===== Hero：書封小一點、文字左對齊、字級易讀 ===== */
+  .hero { padding: calc(var(--nav-h) + 28px) 22px 56px; min-height: auto; }
+  .hero-grid { gap: 26px; text-align: left; }
+  .hero-cover { display: flex; justify-content: center; }
+  .hero-cover img { max-width: 200px; transform: rotateY(-5deg) rotateX(1deg); }
+  .hero-text { text-align: left; }
+  .hero-eyebrow { font-size: 10px; padding: 4px 12px; margin-bottom: 14px; letter-spacing: .1em; }
+  .hero h1 { font-size: 32px; line-height: 1.18; margin-bottom: 14px; letter-spacing: -0.01em; }
+  .hero-sub { font-size: 12.5px; margin-bottom: 18px; line-height: 1.55; }
+  .hero-meta {
+    font-size: 13px; gap: 8px;
+    margin-bottom: 22px;
+    flex-direction: column; align-items: flex-start;
+  }
+  .hero-meta span { width: 100%; }
+  .hero-quote {
+    font-size: 14.5px; padding: 16px 18px;
+    line-height: 1.65; max-width: 100%;
+  }
+  .hero-cta { padding: 13px 24px; font-size: 14.5px; margin-top: 22px; }
+  .scroll-hint { display: none; }
+
+  /* ===== 概要：summary-card 給明顯卡片感 ===== */
+  .sec-overview { background: var(--bg); }
+  .summary-card {
+    padding: 26px 22px;
+    border-radius: 18px;
+    margin: 0 0 24px;
+    background: var(--surface);
+    box-shadow: 0 4px 20px rgba(0,61,145,0.08);
+    border: 1px solid var(--gray-5);
+  }
+  .summary-card p {
+    font-size: 15.5px; line-height: 1.85;
+    margin-bottom: 14px; color: var(--ink-soft);
+  }
+
+  /* 三大理由：左色彩條 + 卡片背景明顯 */
+  .three-reasons { gap: 14px; }
+  .reason {
+    padding: 22px 22px 22px 24px;
+    border-radius: 14px;
+    background: var(--surface);
+    border-left: 4px solid var(--primary);
+    border-top: 1px solid var(--gray-5);
+    border-right: 1px solid var(--gray-5);
+    border-bottom: 1px solid var(--gray-5);
+    box-shadow: 0 2px 12px rgba(0,61,145,0.05);
+  }
+  .reason:nth-child(2) { border-left-color: var(--secondary); }
+  .reason:nth-child(3) { border-left-color: var(--deep); }
+  .reason-num { font-size: 26px; margin-bottom: 10px; }
+  .reason h4 { font-size: 16px; margin-bottom: 8px; }
+  .reason p { font-size: 14px; line-height: 1.75; color: var(--gray-1); }
+
+  /* ===== 三大命題 ===== */
+  .thesis-quote { font-size: 19px; line-height: 1.55; margin-bottom: 36px; padding: 0 4px; }
+  .thesis-quote .en { margin-bottom: 10px; }
+  .thesis-grid { gap: 14px; }
+  .thesis-card {
+    padding: 26px 24px; border-radius: 16px;
+    box-shadow: 0 2px 12px rgba(0,61,145,0.05);
+  }
+  .thesis-num { font-size: 32px; margin-bottom: 12px; }
+  .thesis-card h3 { font-size: 18px; line-height: 1.4; margin-bottom: 10px; }
+  .thesis-card p { font-size: 14.5px; line-height: 1.78; }
+
+  /* ===== 七大支柱 ===== */
+  .pillars-stage { gap: 28px; }
+  .pillars-orbit { max-width: 300px; }
+  .pillars-center .lg { font-size: 18px; }
+  .pillars-center .sm { font-size: 8px; margin-top: 4px; }
+  .pillar-node .letter { font-size: 17px; }
+  .pillar-node .lbl { font-size: 10px; margin-top: 4px; }
+  .pillar-detail {
+    padding: 26px 24px; min-height: auto;
+    border-radius: 16px;
+    box-shadow: 0 4px 20px rgba(0,61,145,0.08);
+  }
+  .pillar-detail h3 { font-size: 20px; margin-bottom: 6px; }
+  .pillar-detail .en { font-size: 11px; margin-bottom: 14px; letter-spacing: .08em; }
+  .pillar-detail p { font-size: 14.5px; line-height: 1.85; }
+  .pillar-detail .hint { margin-top: 16px; padding-top: 14px; font-size: 13px; }
+
+  /* ===== 六大場景：tabs 改橫向滑動 ===== */
+  .scenario-tabs {
+    flex-wrap: nowrap; overflow-x: auto;
+    justify-content: flex-start;
+    margin: 0 -22px 28px;
+    padding: 4px 22px 14px;
+    scrollbar-width: none;
+    -webkit-overflow-scrolling: touch;
+    scroll-snap-type: x mandatory;
+  }
+  .scenario-tabs::-webkit-scrollbar { display: none; }
+  .scenario-tab {
+    flex-shrink: 0; padding: 9px 16px; font-size: 12.5px;
+    white-space: nowrap; scroll-snap-align: start;
+  }
+  .scenario-card {
+    padding: 26px 24px; gap: 16px;
+    border-radius: 16px;
+    box-shadow: 0 2px 12px rgba(0,61,145,0.05);
+  }
+  .scenario-num { font-size: 48px; }
+  .scenario-info h4 { font-size: 19px; }
+  .scenario-info .en { font-size: 12px; margin-bottom: 12px; }
+  .scenario-info .desc { font-size: 14px; line-height: 1.75; margin-bottom: 14px; }
+  .scenario-grid { gap: 8px; }
+  .scenario-cell { padding: 10px 12px; }
+  .scenario-cell .k { font-size: 10px; }
+  .scenario-cell .v { font-size: 13px; }
+  .scenario-tip {
+    font-size: 14px; padding: 16px 18px;
+    margin-top: 22px; line-height: 1.75;
+  }
+
+  /* ===== 三模式 ===== */
+  .modes-grid { gap: 14px; }
+  .mode-card {
+    padding: 26px 24px; border-radius: 16px;
+    box-shadow: 0 2px 12px rgba(0,61,145,0.05);
+  }
+  .mode-mode { font-size: 10px; }
+  .mode-num { font-size: 42px; margin: 6px 0 10px; }
+  .mode-card h4 { font-size: 17px; }
+  .mode-card .en { font-size: 11.5px; margin-bottom: 12px; }
+  .mode-card .desc { font-size: 14px; line-height: 1.75; margin-bottom: 14px; }
+  .mode-card .apply span { font-size: 11.5px; padding: 4px 10px; }
+
+  /* ===== 第 6 章 ===== */
+  .ch6-headline { font-size: 14.5px; line-height: 1.7; margin-bottom: 32px; padding: 0 6px; }
+  .bias-layers { gap: 12px; margin-bottom: 40px; }
+  .bias-card {
+    padding: 22px 22px; border-radius: 14px;
+    box-shadow: 0 2px 12px rgba(0,61,145,0.05);
+  }
+  .bias-card .bias-tag { font-size: 10px; padding: 3px 10px; margin-bottom: 12px; }
+  .bias-card h4 { font-size: 16px; line-height: 1.4; margin-bottom: 10px; }
+  .bias-card p { font-size: 14px; line-height: 1.75; }
+  .bias-card .case { font-size: 12.5px; margin-top: 12px; padding-top: 12px; }
+
+  .spotlight-grid { gap: 14px; }
+  .spotlight {
+    padding: 28px 24px;
+    border-radius: 16px;
+  }
+  .spotlight::before { font-size: 90px; top: 4px; right: 20px; }
+  .spotlight .role { font-size: 10px; margin-bottom: 8px; }
+  .spotlight h4 { font-size: 21px; }
+  .spotlight .org { font-size: 12.5px; margin-bottom: 16px; }
+  .spotlight blockquote { font-size: 15px; padding: 14px 0; line-height: 1.6; margin-bottom: 16px; }
+  .spotlight p { font-size: 14px; line-height: 1.78; }
+  .spotlight ol { margin-top: 10px; padding-left: 20px; }
+  .spotlight ol li { font-size: 14px; margin-bottom: 8px; }
+
+  /* ===== 第 7 章 ===== */
+  .sec-ch7 { padding: 64px 22px; }
+  .stats-grid { gap: 14px; margin-bottom: 40px; }
+  .stat-card {
+    padding: 28px 24px; border-radius: 16px;
+  }
+  .stat-org { font-size: 10px; margin-bottom: 14px; letter-spacing: .15em; }
+  .stat-num { font-size: 52px; margin-bottom: 8px; }
+  .stat-num .unit { font-size: 0.42em; }
+  .stat-label { font-size: 14px; line-height: 1.65; margin-bottom: 14px; }
+  .stat-meta { font-size: 11.5px; padding-top: 12px; line-height: 1.6; }
+  .cases-grid { gap: 14px; }
+  .case-card { padding: 24px 22px; border-radius: 16px; }
+  .case-tag { font-size: 10px; padding: 3px 9px; margin-bottom: 14px; }
+  .case-card h4 { font-size: 17px; line-height: 1.4; margin-bottom: 10px; }
+  .case-card p { font-size: 14px; line-height: 1.75; }
+  .case-card .impact { font-size: 13px; padding-top: 12px; margin-top: 12px; }
+
+  /* ===== 章節時間軸 ===== */
+  .chapter-summary {
+    padding: 22px 4px; gap: 14px;
+    grid-template-columns: 38px 1fr 32px;
+  }
+  .chapter-summary:hover { padding-left: 4px; }
+  .chapter-summary .num { font-size: 24px; }
+  .chapter-summary h4 { font-size: 15.5px; line-height: 1.4; margin-bottom: 4px; }
+  .chapter-summary .ex { font-size: 12.5px; line-height: 1.5; }
+  .chapter-toggle { width: 32px; height: 32px; }
+  .chapter-toggle svg { width: 14px; height: 14px; }
+  .chapter-detail-inner {
+    padding: 0 4px 24px; font-size: 14.5px; line-height: 1.85;
+  }
+  .chapter-detail-inner p { margin-bottom: 14px; }
+  .chapter-detail-inner ul { padding-left: 20px; }
+  .chapter-detail-inner li { font-size: 14.5px; margin-bottom: 8px; }
+  .chapter-detail-inner .pullout {
+    font-size: 13.5px; padding: 14px 16px; margin: 16px 0; line-height: 1.65;
+  }
+
+  /* ===== 行動建議 ===== */
+  .actions-grid { gap: 14px; }
+  .action-card {
+    padding: 26px 24px; gap: 18px;
+    border-radius: 16px;
+    box-shadow: 0 2px 12px rgba(0,61,145,0.05);
+  }
+  .action-num { width: 48px; height: 48px; font-size: 19px; border-radius: 13px; }
+  .action-info h4 { font-size: 17px; line-height: 1.4; margin-bottom: 10px; }
+  .action-info p { font-size: 14px; line-height: 1.75; }
+
+  /* ===== 一句話總結 ===== */
+  .sec-quote { padding: 76px 24px; }
+  .sec-quote::before { font-size: 130px; top: 16px; }
+  .sec-quote .big { font-size: 20px; line-height: 1.55; margin-bottom: 20px; }
+  .sec-quote .zh { font-size: 14.5px; line-height: 1.78; margin-bottom: 24px; }
+  .sec-quote .by { font-size: 12px; padding: 5px 14px; }
+
+  /* ===== Footer ===== */
+  footer { padding: 38px 22px 26px; }
+  .footer-quote { font-size: 13.5px; line-height: 1.7; margin-bottom: 16px; }
+  .footer-meta { font-size: 11.5px; line-height: 1.7; }
+  .footer-tags span { font-size: 10.5px; padding: 4px 10px; }
+
+  /* FAB */
+  .fab-back-top {
+    right: 16px; bottom: 16px;
+    width: 44px; height: 44px;
+  }
+  .fab-back-top { font-size: 16px; }
+
+  /* 觸控優化：禁用 hover 變形 */
+  .reason:hover, .thesis-card:hover, .mode-card:hover,
+  .bias-card:hover, .stat-card:hover, .case-card:hover,
+  .action-card:hover, .summary-card:hover { transform: none; }
+  .hero-cover:hover img { transform: rotateY(-5deg) rotateX(1deg); }
+}
+
+@media (max-width: 480px) {
+  :root { --nav-h: 54px; }
+  .hero h1 { font-size: 28px; line-height: 1.2; }
+  .hero-cover img { max-width: 170px; }
+  .hero-quote { font-size: 14px; padding: 14px 16px; }
+  .section { padding: 50px 18px; }
+  .section-title { font-size: 23px; }
+  .summary-card { padding: 22px 20px; }
+  .summary-card p { font-size: 15px; }
+  .reason { padding: 20px 20px 20px 22px; }
+  .thesis-card { padding: 24px 22px; }
+  .thesis-quote { font-size: 17px; }
+  .pillars-orbit { max-width: 270px; }
+  .pillar-detail { padding: 22px 20px; }
+  .pillar-detail h3 { font-size: 18px; }
+  .stat-num { font-size: 44px; }
+  .scenario-num { font-size: 42px; }
+  .mode-num { font-size: 38px; }
+  .reason-num { font-size: 24px; }
+  .sec-quote { padding: 64px 20px; }
+  .sec-quote .big { font-size: 18px; }
+  .nav-brand .nav-brand-bar { display: block; }
+  .scenario-tabs { margin: 0 -18px 26px; padding: 4px 18px 14px; }
+  .scenario-card { padding: 22px 20px; }
+  .case-card, .stat-card, .bias-card, .mode-card, .action-card { padding: 22px 20px; }
+}
 
 /* ===================== Print ===================== */
 @media print {
@@ -831,7 +1132,7 @@ footer {
 
 <nav class="nav" id="nav">
   <a href="#" class="nav-brand">
-    <span class="nav-brand-icon">FA</span>
+    <span class="nav-brand-bar"></span>
     <span>金融AI革命</span>
   </a>
   <div class="nav-links" id="navLinks">
@@ -845,7 +1146,7 @@ footer {
     <a href="#actions">行動建議</a>
   </div>
   <button class="nav-toggle" id="navToggle" aria-label="切換選單">
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+    <span class="nav-toggle-bars"></span>
   </button>
 </nav>
 
@@ -856,7 +1157,7 @@ footer {
       <img src="cover.jpg" alt="《金融AI革命》書封">
     </div>
     <div class="hero-text">
-      <div class="hero-eyebrow"><span class="dot"></span>互動讀書心得 · 2026</div>
+      <div class="hero-eyebrow"><span class="dot"></span>讀書心得 · 2026</div>
       <h1>金融AI革命<br>智慧轉型之路</h1>
       <div class="hero-sub">Banking on (Artificial) Intelligence — Theodora Lau, 2025</div>
       <div class="hero-meta">
@@ -869,13 +1170,9 @@ footer {
       </div>
       <a href="#overview" class="hero-cta">
         <span>開始閱讀</span>
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+        <span class="arrow">→</span>
       </a>
     </div>
-  </div>
-  <div class="scroll-hint">
-    <div>SCROLL</div>
-    <div class="line"></div>
   </div>
 </header>
 
@@ -928,24 +1225,18 @@ footer {
 
     <div class="thesis-grid reveal-stagger">
       <article class="thesis-card">
-        <div class="thesis-icon">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M3 3h18v18H3z"/><path d="M3 9h18M9 21V9"/></svg>
-        </div>
-        <h3>命題一<br>資產負債表的 AI 化</h3>
+        <div class="thesis-num">01</div>
+        <h3>資產負債表的 AI 化</h3>
         <p>未來 5 年，銀行的每一個資產負債表科目都會被 AI 觸及：存款（反洗錢）、放款（信用評分）、投資（投顧）、手續費（客服）、資本（風險模型）。<strong>沒有任一業務能豁免</strong>。</p>
       </article>
       <article class="thesis-card">
-        <div class="thesis-icon">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 2L4 6v6c0 5 3.5 9 8 10 4.5-1 8-5 8-10V6l-8-4z"/></svg>
-        </div>
-        <h3>命題二<br>信任是護城河</h3>
+        <div class="thesis-num">02</div>
+        <h3>信任是護城河</h3>
         <p>金融業的核心不是「資金中介」而是「<strong>信任中介</strong>」。AI 能把流程做得更快更便宜，但若做壞信任（幻覺、歧視、資料外洩），銀行的 100 年品牌會在 100 天內崩塌。</p>
       </article>
       <article class="thesis-card">
-        <div class="thesis-icon">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M9 12l2 2 4-4"/><path d="M21 12c0 4.97-4.03 9-9 9s-9-4.03-9-9 4.03-9 9-9c2.39 0 4.68.94 6.4 2.6"/></svg>
-        </div>
-        <h3>命題三<br>監管不是拖累</h3>
+        <div class="thesis-num">03</div>
+        <h3>監管不是拖累</h3>
         <p>歐盟 AI Act、美國各州、台灣金管會的 AI 指引正在快速成形。<strong>第一批把「合規 AI」做成系統性能力的銀行</strong>，將拿走最大一塊 AI 紅利。</p>
       </article>
     </div>
@@ -1315,7 +1606,7 @@ footer {
             <h4>為什麼是現在？為什麼是銀行？</h4>
             <div class="ex">三個常見誤解：AI ≠ 生成式 AI、AI 導入不是技術專案、AI 不只降成本</div>
           </div>
-          <div class="chapter-toggle"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></div>
+          <div class="chapter-toggle"><span class="plus">+</span></div>
         </div>
         <div class="chapter-detail">
           <div class="chapter-detail-inner">
@@ -1337,7 +1628,7 @@ footer {
             <h4>AI 在金融業的六大應用場景</h4>
             <div class="ex">Fraud / Financing / Forecasting / Front-office / Functions / Future</div>
           </div>
-          <div class="chapter-toggle"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></div>
+          <div class="chapter-toggle"><span class="plus">+</span></div>
         </div>
         <div class="chapter-detail">
           <div class="chapter-detail-inner">
@@ -1355,7 +1646,7 @@ footer {
             <h4>負責任 AI 的七大支柱</h4>
             <div class="ex">ATEFPSH：可究責 / 透明度 / 可解釋 / 公平 / 隱私 / 資安 / 人類督導</div>
           </div>
-          <div class="chapter-toggle"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></div>
+          <div class="chapter-toggle"><span class="plus">+</span></div>
         </div>
         <div class="chapter-detail">
           <div class="chapter-detail-inner">
@@ -1373,7 +1664,7 @@ footer {
             <h4>從風險走向治理：建立企業級 AI 治理委員會</h4>
             <div class="ex">委員會應跨資訊、法遵、風控、業務、HR 五大單位</div>
           </div>
-          <div class="chapter-toggle"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></div>
+          <div class="chapter-toggle"><span class="plus">+</span></div>
         </div>
         <div class="chapter-detail">
           <div class="chapter-detail-inner">
@@ -1396,7 +1687,7 @@ footer {
             <h4>人機協作的三種模式</h4>
             <div class="ex">AI-in / Human-in / Human-over the loop（已在上方互動展開）</div>
           </div>
-          <div class="chapter-toggle"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></div>
+          <div class="chapter-toggle"><span class="plus">+</span></div>
         </div>
         <div class="chapter-detail">
           <div class="chapter-detail-inner">
@@ -1414,7 +1705,7 @@ footer {
             <h4>多元呈現的重要性</h4>
             <div class="ex">Stori 服務 200 萬拉美勞工 / Quantmate 三層投顧設計</div>
           </div>
-          <div class="chapter-toggle"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></div>
+          <div class="chapter-toggle"><span class="plus">+</span></div>
         </div>
         <div class="chapter-detail">
           <div class="chapter-detail-inner">
@@ -1432,7 +1723,7 @@ footer {
             <h4>未來工作趨勢</h4>
             <div class="ex">IMF 40% / Goldman 1.8 億女性 / Klarna 1 個月 = 700 客服</div>
           </div>
-          <div class="chapter-toggle"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></div>
+          <div class="chapter-toggle"><span class="plus">+</span></div>
         </div>
         <div class="chapter-detail">
           <div class="chapter-detail-inner">
@@ -1525,14 +1816,12 @@ footer {
     <span>金融AI</span><span>讀書心得</span><span>負責任 AI</span><span>Theodora Lau</span><span>2026</span>
   </div>
   <div class="footer-meta">
-    互動讀書心得 · 仿照 ChatGPT 版面重製 · 2026-05-08<br>
+    讀書心得 · 2026-05-08<br>
     Banking on (Artificial) Intelligence · Palgrave Macmillan / Springer · 2025
   </div>
 </footer>
 
-<button class="fab-back-top" id="fabTop" aria-label="回到頂部">
-  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 19V5M5 12l7-7 7 7"/></svg>
-</button>
+<button class="fab-back-top" id="fabTop" aria-label="回到頂部">↑</button>
 
 <script>
 // ====== 進度條 ======
