@@ -1,0 +1,1652 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#019AB3">
+<meta name="description" content="《金融AI革命：智慧轉型之路》互動讀書心得 — Theodora Lau 2025 年新作的台灣銀行業實踐筆記。">
+<meta property="og:title" content="《金融AI革命》互動讀書心得">
+<meta property="og:description" content="七大支柱、六大場景、第 6-7 章深度精讀，與台灣銀行業的五項落地建議。">
+<meta property="og:type" content="article">
+<title>《金融AI革命》互動讀書心得 — Banking on (Artificial) Intelligence</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700;900&family=Noto+Serif+TC:wght@400;700;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  --primary: #019AB3;
+  --primary-dk: #007a8f;
+  --primary-lt: #4cc4d8;
+  --primary-bg: #e7f6f9;
+  --primary-soft: #cce8ed;
+  --secondary: #17B5AD;
+  --secondary-lt: #5fcfc8;
+  --secondary-bg: #e2f6f4;
+  --deep: #003D91;
+  --deep-lt: #1a5dc4;
+  --deep-bg: #e6ecf6;
+  --accent: #f4a261;
+  --accent-bg: #fef0e0;
+  --warning: #e76f51;
+  --warning-bg: #fde0d2;
+  --success: #2a9d8f;
+  --gold: #c9a227;
+  --gold-bg: #fff4cc;
+  --ink: #1a1a1a;
+  --ink-soft: #2d3748;
+  --gray-1: #4a5568;
+  --gray-2: #718096;
+  --gray-3: #a0aec0;
+  --gray-4: #cbd5e0;
+  --gray-5: #e2e8f0;
+  --gray-6: #f1f5f9;
+  --gray-7: #f8fafc;
+  --bg: #fdfcf7;
+  --surface: #ffffff;
+  --line: #e8e2d4;
+  --shadow-sm: 0 1px 2px rgba(0,61,145,0.04), 0 1px 3px rgba(0,61,145,0.06);
+  --shadow-md: 0 4px 6px rgba(0,61,145,0.05), 0 10px 15px rgba(0,61,145,0.08);
+  --shadow-lg: 0 10px 25px rgba(0,61,145,0.08), 0 20px 40px rgba(0,61,145,0.10);
+  --shadow-xl: 0 25px 50px rgba(0,61,145,0.15);
+  --radius-sm: 6px;
+  --radius-md: 12px;
+  --radius-lg: 20px;
+  --radius-xl: 28px;
+  --serif: "Noto Serif TC", "PingFang TC", "Heiti TC", serif;
+  --sans: "Noto Sans TC", "PingFang TC", "Heiti TC", "Microsoft JhengHei", sans-serif;
+  --mono: "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
+  --max-w: 1180px;
+  --nav-h: 64px;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+body {
+  font-family: var(--sans);
+  color: var(--ink);
+  background: var(--bg);
+  line-height: 1.75;
+  font-feature-settings: "palt" 1;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  overflow-x: hidden;
+}
+img { max-width: 100%; display: block; }
+a { color: var(--primary); text-decoration: none; transition: color .2s; }
+a:hover { color: var(--primary-dk); }
+button { font-family: inherit; cursor: pointer; border: none; background: none; }
+
+/* ===================== 進度條 ===================== */
+.progress-bar {
+  position: fixed; top: 0; left: 0; height: 3px; width: 0;
+  background: linear-gradient(90deg, var(--primary), var(--secondary), var(--deep));
+  z-index: 1000; transition: width .1s linear;
+  box-shadow: 0 0 8px rgba(1,154,179,0.4);
+}
+
+/* ===================== 導覽列 ===================== */
+.nav {
+  position: fixed; top: 0; left: 0; right: 0; height: var(--nav-h);
+  background: rgba(253,252,247,0.85);
+  backdrop-filter: saturate(180%) blur(20px);
+  -webkit-backdrop-filter: saturate(180%) blur(20px);
+  border-bottom: 1px solid rgba(232,226,212,0.8);
+  z-index: 100;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0 24px; transition: all .3s;
+}
+.nav.scrolled {
+  background: rgba(253,252,247,0.95);
+  box-shadow: var(--shadow-sm);
+}
+.nav-brand {
+  font-family: var(--serif); font-weight: 700; font-size: 16px;
+  color: var(--deep); letter-spacing: .02em;
+  display: flex; align-items: center; gap: 10px;
+}
+.nav-brand-icon {
+  width: 28px; height: 28px; border-radius: 6px;
+  background: linear-gradient(135deg, var(--primary), var(--deep));
+  display: grid; place-items: center; color: white; font-weight: 900;
+  font-size: 13px; box-shadow: var(--shadow-sm);
+}
+.nav-links { display: flex; gap: 4px; }
+.nav-links a {
+  color: var(--gray-1); font-size: 14px; font-weight: 500;
+  padding: 8px 14px; border-radius: 8px; transition: all .2s;
+}
+.nav-links a:hover { background: var(--primary-bg); color: var(--primary-dk); }
+.nav-links a.active { background: var(--primary); color: white; }
+.nav-toggle {
+  display: none; width: 40px; height: 40px; border-radius: 8px;
+  align-items: center; justify-content: center;
+}
+.nav-toggle svg { width: 22px; height: 22px; stroke: var(--ink); }
+@media (max-width: 880px) {
+  .nav-links {
+    position: fixed; top: var(--nav-h); left: 0; right: 0;
+    flex-direction: column; gap: 0; padding: 12px;
+    background: rgba(253,252,247,0.98);
+    backdrop-filter: blur(20px);
+    border-bottom: 1px solid var(--line);
+    transform: translateY(-200%); transition: transform .3s;
+  }
+  .nav-links.open { transform: translateY(0); }
+  .nav-links a { padding: 14px 18px; font-size: 16px; border-radius: 0; border-bottom: 1px solid var(--gray-6); }
+  .nav-toggle { display: flex; }
+}
+
+/* ===================== Hero ===================== */
+.hero {
+  min-height: 100vh; padding: calc(var(--nav-h) + 60px) 24px 80px;
+  position: relative; overflow: hidden;
+  display: flex; align-items: center;
+}
+.hero::before {
+  content: ""; position: absolute; inset: 0;
+  background:
+    radial-gradient(ellipse 800px 600px at 90% 10%, rgba(23,181,173,0.12), transparent),
+    radial-gradient(ellipse 700px 500px at 10% 90%, rgba(0,61,145,0.10), transparent),
+    radial-gradient(ellipse 600px 400px at 50% 50%, rgba(1,154,179,0.06), transparent);
+  pointer-events: none;
+}
+.hero-grid {
+  position: relative; z-index: 1; max-width: var(--max-w); margin: 0 auto;
+  display: grid; grid-template-columns: minmax(200px, 280px) 1fr; gap: 60px;
+  align-items: center; width: 100%;
+}
+@media (max-width: 880px) {
+  .hero-grid { grid-template-columns: 1fr; gap: 30px; text-align: center; }
+}
+.hero-cover {
+  position: relative; perspective: 1500px;
+  animation: heroIn 1.2s cubic-bezier(.2,.8,.2,1) both;
+}
+.hero-cover img {
+  width: 100%; max-width: 280px; margin: 0 auto;
+  border-radius: 4px;
+  box-shadow:
+    0 1px 1px rgba(0,0,0,0.05),
+    0 5px 15px rgba(0,0,0,0.15),
+    0 30px 60px rgba(0,61,145,0.25),
+    inset 0 0 0 1px rgba(255,255,255,0.1);
+  transform: rotateY(-8deg) rotateX(2deg);
+  transition: transform .6s cubic-bezier(.2,.8,.2,1);
+}
+.hero-cover:hover img { transform: rotateY(0) rotateX(0) scale(1.03); }
+.hero-cover::after {
+  content: ""; position: absolute; left: 8%; right: 8%; bottom: -20px; height: 30px;
+  background: radial-gradient(ellipse, rgba(0,61,145,0.25), transparent 70%);
+  filter: blur(10px); z-index: -1;
+}
+.hero-text { animation: heroIn 1s cubic-bezier(.2,.8,.2,1) .15s both; }
+.hero-eyebrow {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 6px 14px; border-radius: 999px;
+  background: var(--primary-bg); color: var(--primary-dk);
+  font-size: 12px; font-weight: 600; letter-spacing: .12em;
+  margin-bottom: 18px;
+}
+.hero-eyebrow .dot {
+  width: 6px; height: 6px; border-radius: 50%;
+  background: var(--primary); animation: pulse 2s ease-in-out infinite;
+}
+.hero h1 {
+  font-family: var(--serif); font-weight: 900;
+  font-size: clamp(36px, 5.5vw, 64px);
+  line-height: 1.1; letter-spacing: -0.02em;
+  color: var(--ink); margin-bottom: 16px;
+  background: linear-gradient(135deg, var(--ink) 30%, var(--deep) 70%);
+  -webkit-background-clip: text; background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.hero-sub {
+  font-family: var(--mono); font-size: 14px; color: var(--gray-1);
+  margin-bottom: 24px; letter-spacing: .02em;
+}
+.hero-meta {
+  display: flex; flex-wrap: wrap; gap: 8px 18px;
+  margin-bottom: 32px; font-size: 13px; color: var(--gray-1);
+}
+.hero-meta span { display: inline-flex; align-items: center; gap: 6px; }
+.hero-meta strong { color: var(--ink); font-weight: 600; }
+.hero-quote {
+  background: linear-gradient(135deg, var(--gold-bg), #fff8d6);
+  border-left: 4px solid var(--gold);
+  padding: 18px 22px; border-radius: 0 var(--radius-md) var(--radius-md) 0;
+  font-family: var(--serif); font-style: italic; line-height: 1.7;
+  color: #6b5a16; max-width: 560px;
+  box-shadow: var(--shadow-sm);
+}
+.hero-quote::before { content: """; font-size: 28px; line-height: 0; color: var(--gold); margin-right: 6px; }
+.hero-cta {
+  display: inline-flex; align-items: center; gap: 10px;
+  margin-top: 32px; padding: 14px 28px; border-radius: 999px;
+  background: var(--ink); color: white;
+  font-weight: 600; font-size: 15px;
+  box-shadow: var(--shadow-md); transition: all .25s;
+}
+.hero-cta:hover { transform: translateY(-2px); box-shadow: var(--shadow-lg); color: white; background: var(--deep); }
+.hero-cta svg { width: 18px; height: 18px; }
+.scroll-hint {
+  position: absolute; bottom: 30px; left: 50%; transform: translateX(-50%);
+  font-size: 11px; letter-spacing: .3em; color: var(--gray-2);
+  text-transform: uppercase;
+  display: flex; flex-direction: column; align-items: center; gap: 8px;
+  animation: bounce 2s ease-in-out infinite;
+}
+.scroll-hint .line {
+  width: 1px; height: 24px; background: var(--gray-3); position: relative; overflow: hidden;
+}
+.scroll-hint .line::after {
+  content: ""; position: absolute; top: -100%; left: 0; right: 0; height: 50%;
+  background: var(--primary); animation: scroll-line 2s ease-in-out infinite;
+}
+
+@keyframes heroIn {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: .5; transform: scale(1.4); }
+}
+@keyframes bounce {
+  0%, 100% { transform: translateX(-50%) translateY(0); }
+  50% { transform: translateX(-50%) translateY(-6px); }
+}
+@keyframes scroll-line {
+  0% { top: -100%; }
+  100% { top: 100%; }
+}
+
+/* ===================== 區塊共用 ===================== */
+.section {
+  padding: 100px 24px;
+  position: relative;
+}
+.section-inner {
+  max-width: var(--max-w); margin: 0 auto;
+}
+.section-header {
+  text-align: center; margin-bottom: 60px;
+}
+.section-eyebrow {
+  display: inline-block; padding: 6px 16px; border-radius: 999px;
+  background: var(--primary-bg); color: var(--primary-dk);
+  font-size: 12px; font-weight: 700; letter-spacing: .15em;
+  margin-bottom: 18px;
+}
+.section-title {
+  font-family: var(--serif); font-weight: 900;
+  font-size: clamp(28px, 4vw, 44px);
+  line-height: 1.2; letter-spacing: -0.01em;
+  color: var(--ink); margin-bottom: 16px;
+}
+.section-title .accent { color: var(--primary); }
+.section-sub {
+  max-width: 680px; margin: 0 auto;
+  color: var(--gray-1); font-size: 16px; line-height: 1.7;
+}
+
+/* 通用淡入 */
+.reveal { opacity: 0; transform: translateY(30px); transition: opacity .8s cubic-bezier(.2,.8,.2,1), transform .8s cubic-bezier(.2,.8,.2,1); }
+.reveal.in { opacity: 1; transform: translateY(0); }
+.reveal-stagger > * { opacity: 0; transform: translateY(20px); transition: opacity .6s cubic-bezier(.2,.8,.2,1), transform .6s cubic-bezier(.2,.8,.2,1); }
+.reveal-stagger.in > *:nth-child(1) { opacity: 1; transform: translateY(0); transition-delay: .05s; }
+.reveal-stagger.in > *:nth-child(2) { opacity: 1; transform: translateY(0); transition-delay: .12s; }
+.reveal-stagger.in > *:nth-child(3) { opacity: 1; transform: translateY(0); transition-delay: .19s; }
+.reveal-stagger.in > *:nth-child(4) { opacity: 1; transform: translateY(0); transition-delay: .26s; }
+.reveal-stagger.in > *:nth-child(5) { opacity: 1; transform: translateY(0); transition-delay: .33s; }
+.reveal-stagger.in > *:nth-child(6) { opacity: 1; transform: translateY(0); transition-delay: .4s; }
+.reveal-stagger.in > *:nth-child(7) { opacity: 1; transform: translateY(0); transition-delay: .47s; }
+
+/* ===================== 概要卡片網格 ===================== */
+.sec-overview { background: linear-gradient(180deg, var(--bg) 0%, var(--surface) 100%); }
+.summary-card {
+  max-width: 880px; margin: 0 auto 40px;
+  background: var(--surface); border: 1px solid var(--line);
+  border-radius: var(--radius-lg); padding: 40px 36px;
+  box-shadow: var(--shadow-md);
+  position: relative; overflow: hidden;
+}
+.summary-card::before {
+  content: ""; position: absolute; top: 0; left: 0; right: 0; height: 4px;
+  background: linear-gradient(90deg, var(--primary), var(--secondary), var(--deep));
+}
+.summary-card p {
+  color: var(--gray-1); font-size: 16px; line-height: 1.85;
+  margin-bottom: 14px;
+}
+.summary-card p strong { color: var(--ink); font-weight: 700; }
+.summary-card p:last-child { margin-bottom: 0; }
+.three-reasons {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px;
+  max-width: 980px; margin: 40px auto 0;
+}
+@media (max-width: 768px) { .three-reasons { grid-template-columns: 1fr; } }
+.reason {
+  background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius-md);
+  padding: 28px 24px; transition: all .25s;
+  position: relative;
+}
+.reason:hover { transform: translateY(-4px); box-shadow: var(--shadow-md); border-color: var(--primary-lt); }
+.reason-num {
+  font-family: var(--serif); font-size: 36px; font-weight: 900;
+  background: linear-gradient(135deg, var(--primary), var(--deep));
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+  line-height: 1; margin-bottom: 12px;
+}
+.reason h4 { font-size: 17px; font-weight: 700; color: var(--ink); margin-bottom: 8px; }
+.reason p { font-size: 14px; color: var(--gray-1); line-height: 1.7; }
+
+/* ===================== 三大命題（核心論點） ===================== */
+.sec-thesis { background: var(--surface); }
+.thesis-quote {
+  text-align: center; max-width: 760px; margin: 0 auto 60px;
+  font-family: var(--serif); font-size: clamp(20px, 2.6vw, 28px);
+  line-height: 1.55; color: var(--ink); font-weight: 500;
+  position: relative; padding: 0 24px;
+}
+.thesis-quote .en { display: block; font-style: italic; color: var(--deep); margin-bottom: 12px; }
+.thesis-quote .zh { display: block; font-size: 0.78em; color: var(--gray-1); }
+.thesis-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px;
+}
+@media (max-width: 880px) { .thesis-grid { grid-template-columns: 1fr; } }
+.thesis-card {
+  background: linear-gradient(135deg, var(--surface), #fafbfc);
+  border-radius: var(--radius-lg); padding: 32px 28px;
+  border: 1px solid var(--line); position: relative;
+  transition: all .3s;
+  overflow: hidden;
+}
+.thesis-card::before {
+  content: ""; position: absolute; left: 0; top: 0; bottom: 0; width: 4px;
+  background: var(--primary); transition: width .3s;
+}
+.thesis-card:nth-child(2)::before { background: var(--secondary); }
+.thesis-card:nth-child(3)::before { background: var(--deep); }
+.thesis-card:hover { transform: translateY(-6px); box-shadow: var(--shadow-lg); }
+.thesis-card:hover::before { width: 6px; }
+.thesis-icon {
+  width: 48px; height: 48px; border-radius: 12px;
+  display: grid; place-items: center; margin-bottom: 18px;
+  background: var(--primary-bg); color: var(--primary-dk);
+}
+.thesis-card:nth-child(2) .thesis-icon { background: var(--secondary-bg); color: var(--secondary); }
+.thesis-card:nth-child(3) .thesis-icon { background: var(--deep-bg); color: var(--deep); }
+.thesis-icon svg { width: 24px; height: 24px; }
+.thesis-card h3 { font-size: 19px; font-weight: 700; margin-bottom: 12px; color: var(--ink); }
+.thesis-card p { color: var(--gray-1); font-size: 15px; line-height: 1.75; }
+
+/* ===================== 七大支柱 ATEFPSH ===================== */
+.sec-pillars {
+  background: linear-gradient(180deg, var(--surface), var(--deep-bg) 100%);
+  position: relative;
+}
+.pillars-stage {
+  max-width: 980px; margin: 0 auto;
+  display: grid; grid-template-columns: 1fr 1fr; gap: 40px;
+  align-items: center;
+}
+@media (max-width: 880px) { .pillars-stage { grid-template-columns: 1fr; gap: 30px; } }
+.pillars-orbit {
+  position: relative; aspect-ratio: 1; max-width: 460px; margin: 0 auto;
+}
+.pillars-center {
+  position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%);
+  width: 32%; aspect-ratio: 1; border-radius: 50%;
+  background: linear-gradient(135deg, var(--deep), var(--primary));
+  color: white; display: grid; place-items: center;
+  box-shadow: 0 10px 30px rgba(0,61,145,0.3);
+  z-index: 2; text-align: center;
+  font-family: var(--serif); font-weight: 900;
+}
+.pillars-center .lg { font-size: clamp(22px, 4vw, 34px); letter-spacing: 0.06em; line-height: 1; }
+.pillars-center .sm { font-size: 10px; letter-spacing: 0.15em; opacity: .85; margin-top: 6px; }
+.pillar-node {
+  position: absolute; width: 24%; aspect-ratio: 1; border-radius: 50%;
+  background: white; box-shadow: var(--shadow-md);
+  display: grid; place-items: center; cursor: pointer;
+  transition: all .3s cubic-bezier(.2,.8,.2,1);
+  border: 2px solid transparent;
+}
+.pillar-node:hover, .pillar-node.active {
+  transform: scale(1.1); border-color: var(--primary);
+  box-shadow: 0 8px 25px rgba(1,154,179,0.35);
+}
+.pillar-node .letter {
+  font-family: var(--serif); font-weight: 900; font-size: clamp(18px, 3vw, 26px);
+  color: var(--deep); line-height: 1;
+}
+.pillar-node .lbl {
+  position: absolute; top: 100%; margin-top: 6px;
+  font-size: 11px; font-weight: 600; color: var(--gray-1);
+  white-space: nowrap;
+}
+/* 7 個節點圍繞中心 */
+.pillar-node:nth-child(2) { top: 0; left: 50%; transform: translateX(-50%); }
+.pillar-node:nth-child(3) { top: 12.5%; right: 0; }
+.pillar-node:nth-child(4) { bottom: 12.5%; right: 0; }
+.pillar-node:nth-child(5) { bottom: 0; left: 50%; transform: translateX(-50%); }
+.pillar-node:nth-child(6) { bottom: 12.5%; left: 0; }
+.pillar-node:nth-child(7) { top: 12.5%; left: 0; }
+.pillar-node:nth-child(8) { top: 50%; left: -8%; transform: translateY(-50%); }
+.pillar-node:nth-child(2):hover, .pillar-node:nth-child(2).active { transform: translateX(-50%) scale(1.1); }
+.pillar-node:nth-child(5):hover, .pillar-node:nth-child(5).active { transform: translateX(-50%) scale(1.1); }
+.pillar-node:nth-child(8):hover, .pillar-node:nth-child(8).active { transform: translateY(-50%) scale(1.1); }
+
+.pillar-detail {
+  background: white; border-radius: var(--radius-lg); padding: 32px;
+  box-shadow: var(--shadow-md); border: 1px solid var(--line);
+  min-height: 320px; position: relative;
+}
+.pillar-detail-content { display: none; }
+.pillar-detail-content.active { display: block; animation: fadeIn .4s; }
+.pillar-detail h3 {
+  font-family: var(--serif); font-size: 24px; font-weight: 900;
+  color: var(--deep); margin-bottom: 4px;
+}
+.pillar-detail .en { font-size: 13px; color: var(--primary); letter-spacing: .1em; font-weight: 600; margin-bottom: 18px; }
+.pillar-detail p { color: var(--gray-1); line-height: 1.85; font-size: 15px; }
+.pillar-detail .hint {
+  margin-top: 20px; padding-top: 18px; border-top: 1px dashed var(--gray-4);
+  font-size: 13px; color: var(--gray-2); font-style: italic;
+}
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ===================== 六大應用場景 ===================== */
+.sec-scenarios { background: var(--surface); }
+.scenario-tabs {
+  display: flex; flex-wrap: wrap; justify-content: center; gap: 8px;
+  margin-bottom: 40px;
+}
+.scenario-tab {
+  padding: 10px 20px; border-radius: 999px;
+  background: var(--gray-7); color: var(--gray-1);
+  font-size: 14px; font-weight: 600;
+  border: 1px solid var(--gray-5); transition: all .2s;
+}
+.scenario-tab:hover { background: var(--primary-bg); color: var(--primary-dk); border-color: var(--primary-lt); }
+.scenario-tab.active {
+  background: var(--primary); color: white; border-color: var(--primary);
+  box-shadow: 0 4px 12px rgba(1,154,179,0.3);
+}
+.scenario-stage { max-width: 880px; margin: 0 auto; }
+.scenario-panel { display: none; animation: fadeIn .4s; }
+.scenario-panel.active { display: block; }
+.scenario-card {
+  background: linear-gradient(135deg, var(--surface), var(--gray-7));
+  border-radius: var(--radius-lg); padding: 36px;
+  border: 1px solid var(--line); display: grid;
+  grid-template-columns: auto 1fr; gap: 28px;
+}
+@media (max-width: 700px) { .scenario-card { grid-template-columns: 1fr; gap: 16px; } }
+.scenario-num {
+  font-family: var(--serif); font-size: 72px; font-weight: 900;
+  line-height: 1; background: linear-gradient(135deg, var(--primary), var(--deep));
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+}
+.scenario-info h4 { font-family: var(--serif); font-size: 22px; font-weight: 900; color: var(--ink); margin-bottom: 4px; }
+.scenario-info .en { font-size: 13px; color: var(--primary); letter-spacing: .08em; font-weight: 600; margin-bottom: 16px; }
+.scenario-info .desc { color: var(--gray-1); font-size: 15px; line-height: 1.75; margin-bottom: 18px; }
+.scenario-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 14px; }
+@media (max-width: 540px) { .scenario-grid { grid-template-columns: 1fr; } }
+.scenario-cell {
+  padding: 12px 16px; background: white; border-radius: var(--radius-sm);
+  border: 1px solid var(--gray-5);
+}
+.scenario-cell .k { font-size: 11px; color: var(--gray-2); font-weight: 600; letter-spacing: .1em; margin-bottom: 4px; text-transform: uppercase; }
+.scenario-cell .v { font-size: 14px; color: var(--ink); font-weight: 500; }
+.scenario-cell.maturity .v { display: inline-flex; align-items: center; gap: 4px; }
+.dot-row { display: inline-flex; gap: 3px; }
+.dot-row span { width: 8px; height: 8px; border-radius: 50%; background: var(--gray-4); }
+.dot-row span.on { background: var(--primary); }
+.scenario-tip {
+  margin-top: 24px; padding: 18px 22px;
+  background: var(--gold-bg); border-left: 4px solid var(--gold);
+  border-radius: 0 var(--radius-md) var(--radius-md) 0;
+  font-size: 14px; color: #6b5a16; line-height: 1.75;
+}
+.scenario-tip strong { color: var(--gold); }
+
+/* ===================== 章節時間軸（人機協作三模式） ===================== */
+.sec-modes { background: linear-gradient(180deg, var(--surface), var(--secondary-bg) 100%); }
+.modes-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px;
+  max-width: 1080px; margin: 0 auto;
+}
+@media (max-width: 880px) { .modes-grid { grid-template-columns: 1fr; } }
+.mode-card {
+  background: white; border-radius: var(--radius-lg); padding: 32px 28px;
+  border: 1px solid var(--line); position: relative; transition: all .3s;
+  overflow: hidden;
+}
+.mode-card:hover { transform: translateY(-6px); box-shadow: var(--shadow-lg); }
+.mode-card::before {
+  content: ""; position: absolute; top: 0; left: 0; width: 100%; height: 5px;
+  background: linear-gradient(90deg, var(--primary), var(--secondary));
+}
+.mode-card:nth-child(2)::before { background: linear-gradient(90deg, var(--secondary), var(--deep)); }
+.mode-card:nth-child(3)::before { background: linear-gradient(90deg, var(--deep), var(--accent)); }
+.mode-mode { font-family: var(--mono); font-size: 11px; color: var(--gray-2); letter-spacing: .15em; font-weight: 700; }
+.mode-num { font-family: var(--serif); font-size: 56px; font-weight: 900; line-height: 1; color: var(--primary); margin: 8px 0 14px; }
+.mode-card:nth-child(2) .mode-num { color: var(--secondary); }
+.mode-card:nth-child(3) .mode-num { color: var(--deep); }
+.mode-card h4 { font-family: var(--serif); font-size: 19px; font-weight: 700; color: var(--ink); margin-bottom: 6px; }
+.mode-card .en { font-size: 12px; color: var(--gray-2); letter-spacing: .08em; margin-bottom: 14px; }
+.mode-card .desc { color: var(--gray-1); font-size: 14px; line-height: 1.75; margin-bottom: 14px; }
+.mode-card .apply { display: flex; flex-wrap: wrap; gap: 6px; }
+.mode-card .apply span {
+  font-size: 12px; padding: 4px 10px; border-radius: 999px;
+  background: var(--gray-7); color: var(--gray-1); font-weight: 500;
+}
+
+/* ===================== 第6章：多元呈現 ===================== */
+.sec-ch6 { background: linear-gradient(180deg, var(--secondary-bg), var(--surface) 100%); }
+.ch6-headline {
+  text-align: center; max-width: 760px; margin: 0 auto 50px;
+  font-family: var(--serif); font-style: italic;
+  color: var(--gray-1); line-height: 1.7;
+}
+.ch6-headline strong { color: var(--ink); font-style: normal; font-weight: 700; }
+.bias-layers {
+  max-width: 980px; margin: 0 auto 60px;
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px;
+}
+@media (max-width: 880px) { .bias-layers { grid-template-columns: 1fr; } }
+.bias-card {
+  position: relative; background: white;
+  border: 1px solid var(--line); border-radius: var(--radius-md);
+  padding: 28px 24px; transition: all .3s;
+}
+.bias-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-md); }
+.bias-card .bias-tag {
+  display: inline-block; padding: 4px 12px; border-radius: 999px;
+  background: var(--warning-bg); color: var(--warning);
+  font-size: 11px; font-weight: 700; letter-spacing: .1em;
+  margin-bottom: 14px;
+}
+.bias-card h4 { font-size: 17px; font-weight: 700; color: var(--ink); margin-bottom: 10px; }
+.bias-card p { font-size: 14px; color: var(--gray-1); line-height: 1.75; }
+.bias-card .case { margin-top: 12px; padding-top: 12px; border-top: 1px dashed var(--gray-4); font-size: 13px; color: var(--gray-2); font-style: italic; }
+
+.spotlight-grid {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 24px;
+  max-width: 980px; margin: 0 auto;
+}
+@media (max-width: 880px) { .spotlight-grid { grid-template-columns: 1fr; } }
+.spotlight {
+  background: linear-gradient(135deg, var(--deep), #0a2868);
+  color: white; border-radius: var(--radius-lg);
+  padding: 36px 32px; position: relative; overflow: hidden;
+}
+.spotlight:nth-child(2) {
+  background: linear-gradient(135deg, var(--primary-dk), var(--deep));
+}
+.spotlight::before {
+  content: """; position: absolute; top: 10px; right: 24px;
+  font-size: 100px; opacity: .15; line-height: 1;
+  font-family: var(--serif); color: white;
+}
+.spotlight .role { font-size: 11px; letter-spacing: .2em; opacity: .8; font-weight: 600; margin-bottom: 8px; }
+.spotlight h4 { font-family: var(--serif); font-size: 22px; font-weight: 900; margin-bottom: 4px; }
+.spotlight .org { font-size: 13px; opacity: .85; margin-bottom: 18px; }
+.spotlight blockquote {
+  font-family: var(--serif); font-style: italic;
+  font-size: 16px; line-height: 1.65; padding: 16px 0;
+  border-top: 1px solid rgba(255,255,255,0.2);
+  border-bottom: 1px solid rgba(255,255,255,0.2);
+  margin-bottom: 18px;
+}
+.spotlight p { font-size: 14px; line-height: 1.75; opacity: .92; }
+.spotlight ol { padding-left: 20px; margin-top: 10px; }
+.spotlight ol li { margin-bottom: 8px; font-size: 14px; line-height: 1.65; opacity: .92; }
+
+/* ===================== 第7章：未來工作（大數字） ===================== */
+.sec-ch7 { background: var(--ink); color: white; padding: 110px 24px; position: relative; overflow: hidden; }
+.sec-ch7::before {
+  content: ""; position: absolute; inset: 0;
+  background:
+    radial-gradient(ellipse 700px 500px at 80% 0%, rgba(23,181,173,0.18), transparent),
+    radial-gradient(ellipse 600px 400px at 0% 100%, rgba(0,61,145,0.30), transparent);
+  pointer-events: none;
+}
+.sec-ch7 .section-eyebrow { background: rgba(23,181,173,0.2); color: var(--secondary-lt); }
+.sec-ch7 .section-title { color: white; }
+.sec-ch7 .section-title .accent { color: var(--secondary-lt); }
+.sec-ch7 .section-sub { color: rgba(255,255,255,0.7); }
+.stats-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px;
+  max-width: 1000px; margin: 0 auto 60px;
+  position: relative; z-index: 1;
+}
+@media (max-width: 880px) { .stats-grid { grid-template-columns: 1fr; } }
+.stat-card {
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: var(--radius-lg); padding: 36px 28px;
+  backdrop-filter: blur(20px);
+  transition: all .3s;
+}
+.stat-card:hover { background: rgba(255,255,255,0.08); transform: translateY(-4px); }
+.stat-org { font-size: 11px; letter-spacing: .2em; color: var(--secondary-lt); font-weight: 700; margin-bottom: 16px; }
+.stat-num {
+  font-family: var(--serif); font-size: 64px; font-weight: 900;
+  line-height: 1; margin-bottom: 8px;
+  background: linear-gradient(135deg, white, var(--secondary-lt));
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+}
+.stat-num .unit { font-size: 0.5em; margin-left: 4px; }
+.stat-label { font-size: 14px; color: rgba(255,255,255,0.85); line-height: 1.65; margin-bottom: 14px; }
+.stat-meta { font-size: 12px; color: rgba(255,255,255,0.5); border-top: 1px dashed rgba(255,255,255,0.2); padding-top: 12px; }
+
+.cases-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px;
+  max-width: 1080px; margin: 0 auto;
+  position: relative; z-index: 1;
+}
+@media (max-width: 880px) { .cases-grid { grid-template-columns: 1fr; } }
+.case-card {
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: var(--radius-lg); padding: 28px;
+  backdrop-filter: blur(20px); transition: all .3s;
+}
+.case-card:hover { transform: translateY(-4px); background: rgba(255,255,255,0.1); }
+.case-tag { display: inline-block; padding: 4px 10px; border-radius: 999px; background: var(--secondary); color: var(--deep); font-size: 11px; font-weight: 700; letter-spacing: .1em; margin-bottom: 14px; }
+.case-card h4 { font-family: var(--serif); font-size: 18px; font-weight: 700; margin-bottom: 10px; color: white; }
+.case-card p { font-size: 13px; color: rgba(255,255,255,0.8); line-height: 1.75; }
+.case-card .impact { margin-top: 12px; padding-top: 12px; border-top: 1px dashed rgba(255,255,255,0.2); font-size: 13px; color: var(--secondary-lt); font-weight: 500; }
+
+/* ===================== 章節導讀（可展開） ===================== */
+.sec-chapters { background: var(--surface); }
+.chapters-rail { max-width: 880px; margin: 0 auto; }
+.chapter-item {
+  border-bottom: 1px solid var(--gray-5);
+  position: relative;
+}
+.chapter-item:first-child { border-top: 1px solid var(--gray-5); }
+.chapter-summary {
+  padding: 28px 0; cursor: pointer;
+  display: grid; grid-template-columns: 56px 1fr auto; gap: 20px;
+  align-items: center; transition: all .25s;
+}
+.chapter-summary:hover { padding-left: 12px; }
+.chapter-summary .num {
+  font-family: var(--serif); font-size: 32px; font-weight: 900;
+  background: linear-gradient(135deg, var(--primary), var(--deep));
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+  line-height: 1;
+}
+.chapter-summary h4 { font-family: var(--serif); font-size: 18px; font-weight: 700; color: var(--ink); margin-bottom: 4px; }
+.chapter-summary .ex { font-size: 13px; color: var(--gray-2); }
+.chapter-toggle {
+  width: 36px; height: 36px; border-radius: 50%;
+  background: var(--primary-bg); color: var(--primary-dk);
+  display: grid; place-items: center; transition: all .3s;
+  flex-shrink: 0;
+}
+.chapter-toggle svg { width: 18px; height: 18px; transition: transform .3s; }
+.chapter-item.open .chapter-toggle { background: var(--primary); color: white; }
+.chapter-item.open .chapter-toggle svg { transform: rotate(45deg); }
+.chapter-detail {
+  max-height: 0; overflow: hidden; transition: max-height .5s cubic-bezier(.2,.8,.2,1);
+}
+.chapter-item.open .chapter-detail { max-height: 1500px; }
+.chapter-detail-inner {
+  padding: 0 0 32px 76px;
+  color: var(--gray-1); font-size: 15px; line-height: 1.85;
+}
+.chapter-detail-inner p { margin-bottom: 14px; }
+.chapter-detail-inner ul { padding-left: 20px; margin-bottom: 14px; }
+.chapter-detail-inner li { margin-bottom: 8px; }
+.chapter-detail-inner strong { color: var(--ink); font-weight: 700; }
+.chapter-detail-inner .pullout {
+  margin: 16px 0; padding: 16px 20px; background: var(--primary-bg);
+  border-left: 3px solid var(--primary); border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+  font-style: italic; color: var(--deep);
+}
+@media (max-width: 600px) {
+  .chapter-summary { grid-template-columns: 40px 1fr 32px; gap: 14px; padding: 22px 0; }
+  .chapter-summary .num { font-size: 24px; }
+  .chapter-toggle { width: 32px; height: 32px; }
+  .chapter-detail-inner { padding-left: 0; padding-bottom: 24px; }
+}
+
+/* ===================== 五項建議 ===================== */
+.sec-actions { background: linear-gradient(180deg, var(--surface), var(--primary-bg) 100%); }
+.actions-grid {
+  display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px;
+  max-width: 1080px; margin: 0 auto;
+}
+.actions-grid > :nth-child(5) { grid-column: 1 / -1; }
+@media (max-width: 880px) { .actions-grid { grid-template-columns: 1fr; } .actions-grid > :nth-child(5) { grid-column: auto; } }
+.action-card {
+  background: white; border-radius: var(--radius-lg);
+  padding: 32px 28px; border: 1px solid var(--line);
+  display: grid; grid-template-columns: auto 1fr; gap: 22px;
+  transition: all .3s; position: relative; overflow: hidden;
+}
+.action-card::after {
+  content: ""; position: absolute; right: -30px; top: -30px;
+  width: 120px; height: 120px; border-radius: 50%;
+  background: linear-gradient(135deg, var(--primary-bg), transparent);
+  z-index: 0; transition: transform .4s;
+}
+.action-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-lg); border-color: var(--primary-lt); }
+.action-card:hover::after { transform: scale(1.5); }
+.action-card > * { position: relative; z-index: 1; }
+.action-num {
+  width: 56px; height: 56px; border-radius: 16px;
+  display: grid; place-items: center; flex-shrink: 0;
+  background: linear-gradient(135deg, var(--primary), var(--deep));
+  color: white; font-family: var(--serif);
+  font-weight: 900; font-size: 22px;
+  box-shadow: 0 6px 16px rgba(1,154,179,0.3);
+}
+.action-info h4 { font-family: var(--serif); font-size: 19px; font-weight: 900; color: var(--ink); margin-bottom: 8px; }
+.action-info p { font-size: 14px; color: var(--gray-1); line-height: 1.75; }
+.action-info p strong { color: var(--ink); font-weight: 700; }
+
+/* ===================== 一句話總結 ===================== */
+.sec-quote {
+  background:
+    linear-gradient(135deg, rgba(0,61,145,0.95), rgba(1,154,179,0.92)),
+    radial-gradient(ellipse at top, white, transparent 50%);
+  color: white; text-align: center; padding: 120px 24px;
+  position: relative; overflow: hidden;
+}
+.sec-quote::before {
+  content: """; position: absolute; left: 50%; top: 30px;
+  transform: translateX(-50%);
+  font-family: var(--serif); font-size: 200px; line-height: 1;
+  color: rgba(255,255,255,0.1);
+}
+.sec-quote-inner { max-width: 760px; margin: 0 auto; position: relative; z-index: 1; }
+.sec-quote .big {
+  font-family: var(--serif); font-style: italic;
+  font-size: clamp(22px, 3.5vw, 36px);
+  line-height: 1.5; margin-bottom: 24px;
+}
+.sec-quote .zh {
+  font-size: 16px; opacity: .9; line-height: 1.8;
+  margin-bottom: 28px;
+}
+.sec-quote .by {
+  display: inline-block; padding: 6px 18px;
+  background: rgba(255,255,255,0.15); border-radius: 999px;
+  font-size: 13px; letter-spacing: .1em; font-weight: 600;
+  backdrop-filter: blur(10px);
+}
+
+/* ===================== Footer ===================== */
+footer {
+  background: var(--gray-7); padding: 50px 24px 30px;
+  text-align: center; color: var(--gray-2);
+  border-top: 1px solid var(--line);
+}
+.footer-quote {
+  font-family: var(--serif); font-style: italic; font-size: 15px;
+  color: var(--gray-1); margin-bottom: 18px; line-height: 1.7;
+}
+.footer-meta { font-size: 12px; letter-spacing: .08em; }
+.footer-tags { display: flex; flex-wrap: wrap; justify-content: center; gap: 6px; margin: 14px 0; }
+.footer-tags span {
+  font-size: 11px; padding: 4px 10px; border-radius: 999px;
+  background: var(--gray-5); color: var(--gray-1); font-weight: 500;
+}
+
+/* ===================== 浮動按鈕 ===================== */
+.fab-back-top {
+  position: fixed; right: 22px; bottom: 22px;
+  width: 48px; height: 48px; border-radius: 50%;
+  background: var(--ink); color: white;
+  display: grid; place-items: center;
+  box-shadow: var(--shadow-lg);
+  opacity: 0; pointer-events: none;
+  transition: all .3s; z-index: 50;
+}
+.fab-back-top.show { opacity: 1; pointer-events: auto; }
+.fab-back-top:hover { background: var(--deep); transform: translateY(-3px); }
+.fab-back-top svg { width: 20px; height: 20px; }
+
+/* ===================== Print ===================== */
+@media print {
+  .nav, .progress-bar, .fab-back-top, .scroll-hint { display: none; }
+  .section { padding: 30px 20px; page-break-inside: avoid; }
+  .reveal, .reveal-stagger > * { opacity: 1 !important; transform: none !important; }
+}
+</style>
+</head>
+<body>
+
+<div class="progress-bar" id="progress"></div>
+
+<nav class="nav" id="nav">
+  <a href="#" class="nav-brand">
+    <span class="nav-brand-icon">FA</span>
+    <span>金融AI革命</span>
+  </a>
+  <div class="nav-links" id="navLinks">
+    <a href="#overview">概要</a>
+    <a href="#thesis">核心論點</a>
+    <a href="#pillars">七大支柱</a>
+    <a href="#scenarios">六大場景</a>
+    <a href="#modes">人機協作</a>
+    <a href="#ch6">第 6 章</a>
+    <a href="#ch7">第 7 章</a>
+    <a href="#actions">行動建議</a>
+  </div>
+  <button class="nav-toggle" id="navToggle" aria-label="切換選單">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+  </button>
+</nav>
+
+<!-- ============== HERO ============== -->
+<header class="hero">
+  <div class="hero-grid">
+    <div class="hero-cover">
+      <img src="cover.jpg" alt="《金融AI革命》書封">
+    </div>
+    <div class="hero-text">
+      <div class="hero-eyebrow"><span class="dot"></span>互動讀書心得 · 2026</div>
+      <h1>金融AI革命<br>智慧轉型之路</h1>
+      <div class="hero-sub">Banking on (Artificial) Intelligence — Theodora Lau, 2025</div>
+      <div class="hero-meta">
+        <span><strong>原文書名：</strong>Banking on (Artificial) Intelligence</span>
+        <span><strong>作者：</strong>Theodora Lau</span>
+        <span><strong>出版：</strong>Palgrave Macmillan / Springer（2025-02）</span>
+      </div>
+      <div class="hero-quote">
+        AI 不會取代銀行，但會取代「不會用 AI 的銀行」。
+      </div>
+      <a href="#overview" class="hero-cta">
+        <span>開始閱讀</span>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+      </a>
+    </div>
+  </div>
+  <div class="scroll-hint">
+    <div>SCROLL</div>
+    <div class="line"></div>
+  </div>
+</header>
+
+<!-- ============== 概要 ============== -->
+<section class="section sec-overview" id="overview">
+  <div class="section-inner">
+    <div class="section-header reveal">
+      <div class="section-eyebrow">一、內容概要</div>
+      <h2 class="section-title">為什麼這本書<span class="accent">值得細讀</span>?</h2>
+      <p class="section-sub">Theodora Lau 是華裔美籍金融科技評論家、Unconventional Ventures 創辦人，連續三年入選《American Banker》全球金融科技最具影響力女性 Top 20。</p>
+    </div>
+
+    <div class="summary-card reveal">
+      <p>本書是 Theodora Lau <strong>2025 年 2 月在 Palgrave Macmillan 出版的第三本專書</strong>，繁體中文譯名《金融AI革命》。在 ChatGPT、Claude、Gemini 大規模進入金融場景、歐盟 AI Act 全面生效的 2025 年，作者以獨立研究者與投資人的視角，同時談 AI「該做什麼」與「不該做什麼」。</p>
+      <p>全書圍繞 <strong>機會、風險、治理、人本</strong> 四條主軸，對應到銀行 COO、Chief Data Officer、Compliance Head 的日常決策。對台灣金融從業者而言，這不是純粹的概念書，而是一本可以直接落地的決策工具書。</p>
+    </div>
+
+    <div class="three-reasons reveal-stagger">
+      <div class="reason">
+        <div class="reason-num">01</div>
+        <h4>立場中性</h4>
+        <p>作者非 AI 技術供應商，亦非大型銀行經理人，避開了「賣方語言」與「巨頭語言」的雙重盲點。</p>
+      </div>
+      <div class="reason">
+        <div class="reason-num">02</div>
+        <h4>時點精確</h4>
+        <p>涵蓋生成式 AI 進入金融場景後的第一輪落地經驗，同步收錄歐盟 AI Act、美國 NIST AI RMF、新加坡 MAS Veritas 三大監管框架。</p>
+      </div>
+      <div class="reason">
+        <div class="reason-num">03</div>
+        <h4>實務導向</h4>
+        <p>結構圍繞「機會、風險、治理、人本」，對應 COO / CDO / Compliance Head 的日常決策，可直接轉化為可操作清單。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============== 核心論點 ============== -->
+<section class="section sec-thesis" id="thesis">
+  <div class="section-inner">
+    <div class="section-header reveal">
+      <div class="section-eyebrow">二、全書核心論點</div>
+      <h2 class="section-title">一句話貫穿<span class="accent">全書</span></h2>
+    </div>
+
+    <div class="thesis-quote reveal">
+      <span class="en">"AI in banking is not about replacing humans — it is about amplifying human judgment, at scale, responsibly."</span>
+      <span class="zh">銀行業的 AI 不在於取代人，而在於負責任地、規模化地放大人類判斷。</span>
+    </div>
+
+    <div class="thesis-grid reveal-stagger">
+      <article class="thesis-card">
+        <div class="thesis-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M3 3h18v18H3z"/><path d="M3 9h18M9 21V9"/></svg>
+        </div>
+        <h3>命題一<br>資產負債表的 AI 化</h3>
+        <p>未來 5 年，銀行的每一個資產負債表科目都會被 AI 觸及：存款（反洗錢）、放款（信用評分）、投資（投顧）、手續費（客服）、資本（風險模型）。<strong>沒有任一業務能豁免</strong>。</p>
+      </article>
+      <article class="thesis-card">
+        <div class="thesis-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 2L4 6v6c0 5 3.5 9 8 10 4.5-1 8-5 8-10V6l-8-4z"/></svg>
+        </div>
+        <h3>命題二<br>信任是護城河</h3>
+        <p>金融業的核心不是「資金中介」而是「<strong>信任中介</strong>」。AI 能把流程做得更快更便宜，但若做壞信任（幻覺、歧視、資料外洩），銀行的 100 年品牌會在 100 天內崩塌。</p>
+      </article>
+      <article class="thesis-card">
+        <div class="thesis-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M9 12l2 2 4-4"/><path d="M21 12c0 4.97-4.03 9-9 9s-9-4.03-9-9 4.03-9 9-9c2.39 0 4.68.94 6.4 2.6"/></svg>
+        </div>
+        <h3>命題三<br>監管不是拖累</h3>
+        <p>歐盟 AI Act、美國各州、台灣金管會的 AI 指引正在快速成形。<strong>第一批把「合規 AI」做成系統性能力的銀行</strong>，將拿走最大一塊 AI 紅利。</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ============== 七大支柱 ATEFPSH ============== -->
+<section class="section sec-pillars" id="pillars">
+  <div class="section-inner">
+    <div class="section-header reveal">
+      <div class="section-eyebrow">三、負責任 AI 框架</div>
+      <h2 class="section-title">七大支柱 <span class="accent">ATEFPSH</span></h2>
+      <p class="section-sub">作者綜合 NIST AI RMF、歐盟 AI Act、新加坡 MAS Veritas 三大框架，萃取出金融業必須背下來的 7 個字母。<br><strong>點擊圓點，看每個支柱的內涵。</strong></p>
+    </div>
+
+    <div class="pillars-stage reveal">
+      <div class="pillars-orbit" id="orbit">
+        <div class="pillars-center">
+          <div>
+            <div class="lg">ATEFPSH</div>
+            <div class="sm">RESPONSIBLE AI</div>
+          </div>
+        </div>
+        <button class="pillar-node active" data-pillar="A"><span class="letter">A</span><span class="lbl">可究責</span></button>
+        <button class="pillar-node" data-pillar="T"><span class="letter">T</span><span class="lbl">透明度</span></button>
+        <button class="pillar-node" data-pillar="E"><span class="letter">E</span><span class="lbl">可解釋</span></button>
+        <button class="pillar-node" data-pillar="F"><span class="letter">F</span><span class="lbl">公平性</span></button>
+        <button class="pillar-node" data-pillar="P"><span class="letter">P</span><span class="lbl">隱私</span></button>
+        <button class="pillar-node" data-pillar="S"><span class="letter">S</span><span class="lbl">資安</span></button>
+        <button class="pillar-node" data-pillar="H"><span class="letter">H</span><span class="lbl">人類督導</span></button>
+      </div>
+
+      <div class="pillar-detail" id="pillarDetail">
+        <div class="pillar-detail-content active" data-pillar="A">
+          <h3>Accountability　可究責</h3>
+          <div class="en">Every AI decision can be traced back to a person.</div>
+          <p>每一個 AI 決策都要能追溯到一個「人」或「團隊」。沒有「電腦這樣判」的開脫條款，所有自動化決策必須有指定的責任歸屬。</p>
+          <div class="hint">板信對應：AI 治理委員會章程須明訂每一個用例的「決策責任長」。</div>
+        </div>
+        <div class="pillar-detail-content" data-pillar="T">
+          <h3>Transparency　透明度</h3>
+          <div class="en">Speak clearly to regulators, customers, and staff.</div>
+          <p>不是把演算法公開，而是向監理、客戶、員工講得清楚「為什麼」。透明度是溝通能力，不是技術參數。</p>
+          <div class="hint">三個受眾、三套說法：監理用合規語、客戶用白話、員工用流程語。</div>
+        </div>
+        <div class="pillar-detail-content" data-pillar="E">
+          <h3>Explainability　可解釋性</h3>
+          <div class="en">Counterfactual explanations are mandatory for high-stakes decisions.</div>
+          <p>對拒絕放款、費率調整這類高風險決策，必須提供「<strong>若…則不同</strong>」的反事實解釋。「分數不夠」不是解釋，「若你的負債比再低 5%，就會通過」才是。</p>
+          <div class="hint">立法趨勢：歐盟 AI Act 已將高風險決策的反事實解釋列為強制要求。</div>
+        </div>
+        <div class="pillar-detail-content" data-pillar="F">
+          <h3>Fairness　公平性</h3>
+          <div class="en">No discrimination by gender, ethnicity, or geography.</div>
+          <p>模型不得因性別、族裔、地域產生歧視性差別待遇；需<strong>定期做偏差審計</strong>。多元若沒有可量測的指標，只是修辭。</p>
+          <div class="hint">最低標：每季發布 5 個子群（性別 × 年齡 × 地域）的通過率/誤判率差距。</div>
+        </div>
+        <div class="pillar-detail-content" data-pillar="P">
+          <h3>Privacy　隱私</h3>
+          <div class="en">Federated Learning &amp; Differential Privacy are infrastructure, not academia.</div>
+          <p>聯邦式學習（Federated Learning）、差分隱私（Differential Privacy）<strong>不再是學術名詞</strong>，而是銀行導入 AI 的底層建設。原始客戶資料不出庫、模型在加密下訓練是新常態。</p>
+          <div class="hint">合規對齊：金管會「金融業運用 AI 核心原則」第 5 條已明列。</div>
+        </div>
+        <div class="pillar-detail-content" data-pillar="S">
+          <h3>Security　資安</h3>
+          <div class="en">New attack surfaces: prompt injection, model poisoning, jailbreak.</div>
+          <p>AI 帶來新的攻擊面 — <strong>提示注入（prompt injection）、模型投毒（model poisoning）、越獄攻擊（jailbreak）</strong> — 必須納入既有的資安治理體系，不能視為「另一個 IT 議題」。</p>
+          <div class="hint">紅隊演練：每半年針對自家 LLM 客服進行對抗式測試。</div>
+        </div>
+        <div class="pillar-detail-content" data-pillar="H">
+          <h3>Human Oversight　人類督導</h3>
+          <div class="en">High-impact decisions always retain human final approval.</div>
+          <p>所有「<strong>影響客戶權益</strong>」的 AI 決策必須保留人類最終核准。AI 可以建議、可以排序、可以草擬，但「按下確定鍵」的，永遠是人。</p>
+          <div class="hint">設計原則：UI 預設不讓 AI 自動執行任何客戶層面的金錢動作。</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============== 六大應用場景 ============== -->
+<section class="section sec-scenarios" id="scenarios">
+  <div class="section-inner">
+    <div class="section-header reveal">
+      <div class="section-eyebrow">四、AI 在金融業的</div>
+      <h2 class="section-title">六大應用場景<span class="accent">（6F）</span></h2>
+      <p class="section-sub">作者依資金流向與用戶摩擦點，歸納出六大場景。<strong>點擊上方標籤切換</strong>，看每個場景的代表案例與成熟度。</p>
+    </div>
+
+    <div class="scenario-tabs reveal" id="scenTabs">
+      <button class="scenario-tab active" data-scen="0">1. Fraud 反詐欺</button>
+      <button class="scenario-tab" data-scen="1">2. Financing 信貸</button>
+      <button class="scenario-tab" data-scen="2">3. Forecasting 預測</button>
+      <button class="scenario-tab" data-scen="3">4. Front-office 客戶</button>
+      <button class="scenario-tab" data-scen="4">5. Functions 中後台</button>
+      <button class="scenario-tab" data-scen="5">6. Future 監理科技</button>
+    </div>
+
+    <div class="scenario-stage reveal" id="scenStage">
+      <div class="scenario-panel active" data-scen="0">
+        <div class="scenario-card">
+          <div class="scenario-num">01</div>
+          <div class="scenario-info">
+            <h4>Fraud · 反詐欺</h4>
+            <div class="en">Real-time transaction anomaly detection</div>
+            <div class="desc">即時交易異常偵測。AI 在毫秒內判斷一筆刷卡是否合理，從卡片消費行為、地理位置、商戶屬性、裝置指紋等多維度評分。</div>
+            <div class="scenario-grid">
+              <div class="scenario-cell"><div class="k">代表案例</div><div class="v">JPMorgan COiN · Visa Advanced Authorization</div></div>
+              <div class="scenario-cell maturity"><div class="k">成熟度</div><div class="v">高（已規模化）<span class="dot-row"><span class="on"></span><span class="on"></span><span class="on"></span><span class="on"></span><span class="on"></span></span></div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="scenario-panel" data-scen="1">
+        <div class="scenario-card">
+          <div class="scenario-num">02</div>
+          <div class="scenario-info">
+            <h4>Financing · 信貸審核</h4>
+            <div class="en">Alternative-data credit scoring</div>
+            <div class="desc">另類資料信用評分。除了傳統聯徵資料，整合手機使用、社群、消費等替代資料，服務原本被視為「薄信用」（thin file）的客群。</div>
+            <div class="scenario-grid">
+              <div class="scenario-cell"><div class="k">代表案例</div><div class="v">Upstart · ZestFinance · Stori（拉美）</div></div>
+              <div class="scenario-cell maturity"><div class="k">成熟度</div><div class="v">中高<span class="dot-row"><span class="on"></span><span class="on"></span><span class="on"></span><span class="on"></span><span></span></span></div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="scenario-panel" data-scen="2">
+        <div class="scenario-card">
+          <div class="scenario-num">03</div>
+          <div class="scenario-info">
+            <h4>Forecasting · 市場預測</h4>
+            <div class="en">Quantitative investing &amp; research generation</div>
+            <div class="desc">量化投資、研報生成。LLM 進入研究室，把分析師從「閱讀 200 頁年報」的勞務中解放，專注於「形成觀點」的高價值工作。</div>
+            <div class="scenario-grid">
+              <div class="scenario-cell"><div class="k">代表案例</div><div class="v">BloombergGPT · FinGPT</div></div>
+              <div class="scenario-cell maturity"><div class="k">成熟度</div><div class="v">中<span class="dot-row"><span class="on"></span><span class="on"></span><span class="on"></span><span></span><span></span></span></div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="scenario-panel" data-scen="3">
+        <div class="scenario-card">
+          <div class="scenario-num">04</div>
+          <div class="scenario-info">
+            <h4>Front-office · 客戶體驗</h4>
+            <div class="en">Conversational finance &amp; Robo-advisory</div>
+            <div class="desc">對話式理財、Robo-advisor。AI 客服處理 80% 例行查詢，把人類理專留給真正需要人性化對話的客戶。</div>
+            <div class="scenario-grid">
+              <div class="scenario-cell"><div class="k">代表案例</div><div class="v">Bank of America Erica · Klarna AI 助理</div></div>
+              <div class="scenario-cell maturity"><div class="k">成熟度</div><div class="v">中<span class="dot-row"><span class="on"></span><span class="on"></span><span class="on"></span><span></span><span></span></span></div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="scenario-panel" data-scen="4">
+        <div class="scenario-card">
+          <div class="scenario-num">05</div>
+          <div class="scenario-info">
+            <h4>Functions · 中後台</h4>
+            <div class="en">Compliance docs &amp; CRM automation</div>
+            <div class="desc">合規文件生成、CRM 自動化。法遵、風控、人資的標準化文書工作，是 AI 投資報酬率最高、爭議最低的切入點。</div>
+            <div class="scenario-grid">
+              <div class="scenario-cell"><div class="k">代表案例</div><div class="v">Morgan Stanley AI @ Work · 摩根大通 IndexGPT</div></div>
+              <div class="scenario-cell maturity"><div class="k">成熟度</div><div class="v">快速成長<span class="dot-row"><span class="on"></span><span class="on"></span><span class="on"></span><span class="on"></span><span></span></span></div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="scenario-panel" data-scen="5">
+        <div class="scenario-card">
+          <div class="scenario-num">06</div>
+          <div class="scenario-info">
+            <h4>Future · 監理科技</h4>
+            <div class="en">RegTech &amp; SupTech</div>
+            <div class="desc">監理科技與監督科技。監理機關用 AI 監督金融業，金融業用 AI 對接監理；雙向自動化將重塑 2030 年的合規格局。</div>
+            <div class="scenario-grid">
+              <div class="scenario-cell"><div class="k">代表案例</div><div class="v">Singapore MAS Veritas · BIS Project Aurora</div></div>
+              <div class="scenario-cell maturity"><div class="k">成熟度</div><div class="v">起步<span class="dot-row"><span class="on"></span><span class="on"></span><span></span><span></span><span></span></span></div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="scenario-tip reveal">
+      <strong>作者重點提醒：</strong>最值得投入的不是最酷的，而是「<strong>資料品質最高 × 風險成本最低</strong>」的交集。對多數區域型銀行而言，這個交集就在反詐欺與中後台自動化。
+    </div>
+  </div>
+</section>
+
+<!-- ============== 人機協作三模式 ============== -->
+<section class="section sec-modes" id="modes">
+  <div class="section-inner">
+    <div class="section-header reveal">
+      <div class="section-eyebrow">五、人機協作的</div>
+      <h2 class="section-title">三種<span class="accent">運作模式</span></h2>
+      <p class="section-sub">把人留給異常 — 當銀行能把 L1 作業自動化到 90%，L1 作業員會升級成「模型訓練師」與「例外處理專家」，薪資帶向上移動而非下移。</p>
+    </div>
+
+    <div class="modes-grid reveal-stagger">
+      <article class="mode-card">
+        <div class="mode-mode">MODE 1</div>
+        <div class="mode-num">01</div>
+        <h4>AI-in-the-loop</h4>
+        <div class="en">AI 是副駕駛，人類做決策</div>
+        <div class="desc">AI 提供建議與資訊，但決策權與最終核准權完全保留在人類手中。</div>
+        <div class="apply">
+          <span>理專</span><span>核保</span><span>授信審查</span>
+        </div>
+      </article>
+      <article class="mode-card">
+        <div class="mode-mode">MODE 2</div>
+        <div class="mode-num">02</div>
+        <h4>Human-in-the-loop</h4>
+        <div class="en">人類是例外處理者，AI 做 95% 決策</div>
+        <div class="desc">AI 處理大量重複任務，人類聚焦於模型不確定或超出規則的例外情境。</div>
+        <div class="apply">
+          <span>反詐欺</span><span>客服對話</span><span>反洗錢 L1</span>
+        </div>
+      </article>
+      <article class="mode-card">
+        <div class="mode-mode">MODE 3</div>
+        <div class="mode-num">03</div>
+        <h4>Human-over-the-loop</h4>
+        <div class="en">人類是監督者，AI 自主運行</div>
+        <div class="desc">AI 全自動運行，人類定期抽查並保留否決權。需要強健的可解釋性與審計軌跡。</div>
+        <div class="apply">
+          <span>量化交易</span><span>自動化合規</span>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ============== 第 6 章 多元呈現 ============== -->
+<section class="section sec-ch6" id="ch6">
+  <div class="section-inner">
+    <div class="section-header reveal">
+      <div class="section-eyebrow">六、第 6 章　多元呈現的重要性</div>
+      <h2 class="section-title">AI 是替<span class="accent">誰</span>建造的?</h2>
+    </div>
+
+    <div class="ch6-headline reveal">
+      <strong>"AI is not biased because it is mean. AI is biased because we were not paying attention."</strong><br>
+      AI 不是因為惡意而帶有偏見，而是因為我們沒留意。
+    </div>
+
+    <div class="reveal" style="text-align:center; margin-bottom:32px; font-size:14px; color:var(--gray-2); letter-spacing:.1em;">— 偏見的三層結構 —</div>
+
+    <div class="bias-layers reveal-stagger">
+      <article class="bias-card">
+        <span class="bias-tag">資料層</span>
+        <h4>過去的資料 ≠ 未來的世界</h4>
+        <p>訓練資料反映的是「過去誰被服務、誰被拒絕」，而非「未來誰應該被服務」。</p>
+        <div class="case">案例：亞馬遜履歷篩選 AI 把女性履歷自動降級。</div>
+      </article>
+      <article class="bias-card">
+        <span class="bias-tag">設計層</span>
+        <h4>看不見的人，模型也看不見</h4>
+        <p>WEF 統計：全球 AI 從業人員中女性僅佔約 22%，少數族裔比例更低。設計者本身的同質性會直接寫進產品。</p>
+        <div class="case">啟示：開發團隊組成 = 模型輸出的下限。</div>
+      </article>
+      <article class="bias-card">
+        <span class="bias-tag">部署層</span>
+        <h4>同一模型，不同地區，不同效果</h4>
+        <p>一個在加州訓練好的詐欺偵測模型，搬到東南亞可能把所有跨境匯款誤判成洗錢。</p>
+        <div class="case">啟示：在地化（localization）比想像中更困難。</div>
+      </article>
+    </div>
+
+    <div class="reveal" style="text-align:center; margin: 60px 0 32px; font-size:14px; color:var(--gray-2); letter-spacing:.1em;">— 兩段焦點訪談：被服務的「另一邊」 —</div>
+
+    <div class="spotlight-grid reveal-stagger">
+      <article class="spotlight">
+        <div class="role">FOUNDER · STORI</div>
+        <h4>Demir Johnson</h4>
+        <div class="org">墨西哥 fintech，服務拉美未銀行族</div>
+        <blockquote>We are not 'banking the unbanked' — we are reverse-engineering banking for them.</blockquote>
+        <p>截至訪談時，Stori 已服務超過 200 萬戶、發出數十億美元信貸，違約率反而<strong>低於業界水準</strong> — 因為他們用替代資料（手機、社群、消費）重建信用模型，而非套用美國模型。</p>
+      </article>
+      <article class="spotlight">
+        <div class="role">RESEARCHER · QUANTMATE</div>
+        <h4>Nicole Königstein</h4>
+        <div class="org">投資顧問與 AI 策略部研究員</div>
+        <blockquote>同一個「最佳資產配置」，給金融素養 90 分與 30 分的客戶看，後者會看不懂、不執行、最後對 AI 失去信任。</blockquote>
+        <p>她提出三層 AI 投顧設計：</p>
+        <ol>
+          <li><strong>語言層</strong> — 用客戶聽得懂的方式解釋。</li>
+          <li><strong>行為層</strong> — 預測客戶在恐慌期會不會亂砍倉。</li>
+          <li><strong>教育層</strong> — 每次互動都把客戶的金融素養往上推一階。</li>
+        </ol>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ============== 第 7 章 未來工作 ============== -->
+<section class="section sec-ch7" id="ch7">
+  <div class="section-inner">
+    <div class="section-header reveal">
+      <div class="section-eyebrow">七、第 7 章　未來工作趨勢</div>
+      <h2 class="section-title">這次會不會<span class="accent">重蹈歷史覆轍</span>?</h2>
+      <p class="section-sub">19 世紀蒸汽機、20 世紀電腦、現在 AI 又一次重塑勞動市場。三組必須直視的數據：</p>
+    </div>
+
+    <div class="stats-grid reveal-stagger">
+      <div class="stat-card">
+        <div class="stat-org">IMF · 國際貨幣基金</div>
+        <div class="stat-num" data-target="40" data-suffix="%">0<span class="unit">%</span></div>
+        <div class="stat-label">全球工作將受 AI 影響；先進經濟體達 60%</div>
+        <div class="stat-meta">33% 高度自動化 · 24% 內容變更 · 18% 直接被取代</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-org">GOLDMAN SACHS · 高盛</div>
+        <div class="stat-num" data-target="1.8" data-suffix="億">0<span class="unit">億</span></div>
+        <div class="stat-label">女性受 AI 衝擊，比例高於男性</div>
+        <div class="stat-meta">全球約 3 億份白領工作受影響</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-org">WEF · 世界經濟論壇</div>
+        <div class="stat-num" data-target="6900" data-suffix="萬">0<span class="unit">萬</span></div>
+        <div class="stat-label">5 年內新增職缺；同時有 25% 工作會被改寫</div>
+        <div class="stat-meta">淨減少 1,400 萬個職位</div>
+      </div>
+    </div>
+
+    <div class="reveal" style="text-align:center; margin: 60px 0 32px; font-size:13px; color:var(--secondary-lt); letter-spacing:.15em;">— 三個企業案例 —</div>
+
+    <div class="cases-grid reveal-stagger">
+      <article class="case-card">
+        <div class="case-tag">CASE 1 · JPMORGAN</div>
+        <h4>擴大實習計畫（Expand Apprenticeships）</h4>
+        <p>把原本 12-18 個月的「跟班學習」濃縮為 6-9 個月的「AI 模擬訓練 + 實戰」。核心是用 AI 模擬器讓新人在零客戶風險下完成 1,000 次完整對話，再進入真實業務。</p>
+        <div class="impact">啟示：把高風險的「真客戶練習」改成「AI 模擬客戶 + 督導即時回饋」。</div>
+      </article>
+      <article class="case-card">
+        <div class="case-tag">CASE 2 · KLARNA</div>
+        <h4>用 AI 取代 700 名客服？</h4>
+        <p>AI 客服上線 1 個月，相當於 700 名客服全職工作量、客戶滿意度與人類客服打平、平均處理時間從 11 分鐘降到 2 分鐘。<strong>關鍵在於：Klarna 沒有大規模裁員</strong>，而是把這 700 個職位轉去做更高階的「客戶健康諮詢」。</p>
+        <div class="impact">啟示：自動化不是「會不會裁員」，而是「能否設計出讓被替代者升級的路徑」。</div>
+      </article>
+      <article class="case-card">
+        <div class="case-tag">CASE 3 · GOOGLE</div>
+        <h4>AI Opportunity Fund</h4>
+        <p>與 New York Jobs CEO Council、CUNY 合作，目標 2 年內訓練 200 萬美國人 AI 基礎技能；其中紐約市子計畫已讓 5 萬名低收入族群完成培訓。</p>
+        <div class="impact">啟示：政府－企業－教育三方合作的典範，台灣可複製。</div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ============== 章節導讀（可展開） ============== -->
+<section class="section sec-chapters" id="chapters">
+  <div class="section-inner">
+    <div class="section-header reveal">
+      <div class="section-eyebrow">八、章節導讀</div>
+      <h2 class="section-title">7 章重點<span class="accent">一次看</span></h2>
+      <p class="section-sub">點擊每章查看完整摘要。每一章都對應銀行業實際決策場景。</p>
+    </div>
+
+    <div class="chapters-rail reveal">
+      <div class="chapter-item open">
+        <div class="chapter-summary">
+          <div class="num">01</div>
+          <div>
+            <h4>為什麼是現在？為什麼是銀行？</h4>
+            <div class="ex">三個常見誤解：AI ≠ 生成式 AI、AI 導入不是技術專案、AI 不只降成本</div>
+          </div>
+          <div class="chapter-toggle"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></div>
+        </div>
+        <div class="chapter-detail">
+          <div class="chapter-detail-inner">
+            <p>第 1 章先拆解三個常見誤解：</p>
+            <ul>
+              <li><strong>誤解一：AI = 生成式 AI。</strong>實際上，銀行業 80% 的 AI 產值仍來自傳統機器學習（信用評分、詐欺偵測、客戶分群），生成式 AI 是「錦上添花」而非「取而代之」。</li>
+              <li><strong>誤解二：AI 導入是技術專案。</strong>作者強調 AI 導入是<strong>組織變革專案</strong> — 資料治理、角色重設計、風控流程重寫，佔 70%；模型只佔 30%。</li>
+              <li><strong>誤解三：AI 能降低成本。</strong>短期是成本中心、中期是收入引擎、長期是合規工具 — 不同階段有不同的 ROI 指標，混在一起看就會得出錯誤結論。</li>
+            </ul>
+            <div class="pullout">關鍵詞：「AI 導入是組織變革，不是 IT 專案」 — 這句話應該寫進每一份立案書的第一頁。</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="chapter-item">
+        <div class="chapter-summary">
+          <div class="num">02</div>
+          <div>
+            <h4>AI 在金融業的六大應用場景</h4>
+            <div class="ex">Fraud / Financing / Forecasting / Front-office / Functions / Future</div>
+          </div>
+          <div class="chapter-toggle"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></div>
+        </div>
+        <div class="chapter-detail">
+          <div class="chapter-detail-inner">
+            <p>作者依據資金流向與用戶摩擦點，歸納出六大場景（已在上方「六大應用場景」區塊用 tab 互動展開）。</p>
+            <p>對多數區域型銀行而言，最值得投入的不是最酷的，而是「<strong>資料品質最高 × 風險成本最低</strong>」的交集 — 也就是反詐欺與中後台自動化。</p>
+            <div class="pullout">不要追逐熱潮。先做完反詐欺與後台自動化的 ROI，再談對話式 AI 與生成式投顧。</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="chapter-item">
+        <div class="chapter-summary">
+          <div class="num">03</div>
+          <div>
+            <h4>負責任 AI 的七大支柱</h4>
+            <div class="ex">ATEFPSH：可究責 / 透明度 / 可解釋 / 公平 / 隱私 / 資安 / 人類督導</div>
+          </div>
+          <div class="chapter-toggle"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></div>
+        </div>
+        <div class="chapter-detail">
+          <div class="chapter-detail-inner">
+            <p>作者綜合 NIST AI RMF、歐盟 AI Act、新加坡 MAS Veritas 三大框架，萃取出七大支柱（已在上方「七大支柱」互動環展開）。</p>
+            <p>這七個字母 ATEFPSH 應該成為所有金融機構 AI 治理委員會的<strong>標準檢核表</strong>。每一個 AI 用例上線前，七個檢核項都要簽過字。</p>
+            <div class="pullout">合規 AI 不是 ESG 加分題，而是進場門票 — 這個觀點是全書最值得內部高階主管反覆討論的部分。</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="chapter-item">
+        <div class="chapter-summary">
+          <div class="num">04</div>
+          <div>
+            <h4>從風險走向治理：建立企業級 AI 治理委員會</h4>
+            <div class="ex">委員會應跨資訊、法遵、風控、業務、HR 五大單位</div>
+          </div>
+          <div class="chapter-toggle"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></div>
+        </div>
+        <div class="chapter-detail">
+          <div class="chapter-detail-inner">
+            <p>第 4 章作者拆解大型銀行（JPMorgan、HSBC、星展）AI 治理組織的實際架構，並指出三個常見錯誤：</p>
+            <ul>
+              <li>AI 治理委員會由<strong>資訊部主導</strong> — 結果合規與業務都缺席，模型上線後出事才補救。</li>
+              <li>把 AI 治理做成「一次性章程」 — 沒有定期審視，章程在第一年就過時。</li>
+              <li>把 AI 治理當成<strong>檔案專案</strong> — 滿足監理而沒進到日常決策。</li>
+            </ul>
+            <p>正確做法是把 AI 治理做成「<strong>季度循環</strong>」：每季由總經理層級主持、檢視所有用例、按 ATEFPSH 七支柱打分。</p>
+            <div class="pullout">AI 治理不是寫一份政策，而是建立一個會議節奏。</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="chapter-item">
+        <div class="chapter-summary">
+          <div class="num">05</div>
+          <div>
+            <h4>人機協作的三種模式</h4>
+            <div class="ex">AI-in / Human-in / Human-over the loop（已在上方互動展開）</div>
+          </div>
+          <div class="chapter-toggle"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></div>
+        </div>
+        <div class="chapter-detail">
+          <div class="chapter-detail-inner">
+            <p>三種模式對應金融業不同業務的風險－效率取捨。</p>
+            <p>對台灣銀行業特別有啟發的一點：<strong>Mode 2 不是取代人，而是「把人留給異常」</strong>。當一家銀行能把 L1 作業自動化到 90%，L1 作業員反而升級成「模型訓練師」與「例外處理專家」，薪資帶向上移動而非下移。</p>
+            <div class="pullout">把人留給異常 — 這是 AI 時代金融業 HR 政策的最高指導原則。</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="chapter-item">
+        <div class="chapter-summary">
+          <div class="num">06</div>
+          <div>
+            <h4>多元呈現的重要性</h4>
+            <div class="ex">Stori 服務 200 萬拉美勞工 / Quantmate 三層投顧設計</div>
+          </div>
+          <div class="chapter-toggle"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></div>
+        </div>
+        <div class="chapter-detail">
+          <div class="chapter-detail-inner">
+            <p>第 6 章是全書最動人、也最尖銳的一章。詳細內容已在上方第 6 章專讀中展開（資料／設計／部署三層偏見、Stori 與 Quantmate 兩段焦點訪談）。</p>
+            <p>作者最重要的提醒：<strong>有偏見的 AI = 有缺陷的產品 = 有違規風險 = 有商譽風險</strong>。把多元當成「軟性議題」是 30 年前的想法，2026 年它已經是直接寫進法規與合約裡的硬指標。</p>
+            <div class="pullout">Diversity without measurement is just rhetoric. — 多元若沒有可量測的指標，只是修辭。</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="chapter-item">
+        <div class="chapter-summary">
+          <div class="num">07</div>
+          <div>
+            <h4>未來工作趨勢</h4>
+            <div class="ex">IMF 40% / Goldman 1.8 億女性 / Klarna 1 個月 = 700 客服</div>
+          </div>
+          <div class="chapter-toggle"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></div>
+        </div>
+        <div class="chapter-detail">
+          <div class="chapter-detail-inner">
+            <p>終章作者沒有賣弄科幻預測，而是務實地指出 2030 年銀行家的新樣貌：</p>
+            <ul>
+              <li><strong>理專</strong>：從產品推銷員 → 財務健康教練（financial wellness coach）。</li>
+              <li><strong>分行</strong>：從交易場所 → 諮詢與信任建構場所。80% 交易線上化後，分行存在理由是「複雜決策的人性化對話」。</li>
+              <li><strong>後台</strong>：從文件處理者 → AI 模型監督者。合規、法遵、風控團隊需加修「AI 素養」課程。</li>
+              <li><strong>高階主管</strong>：CDO（Chief Data Officer）的權重會超越 CIO，成為董事會固定議題。</li>
+            </ul>
+            <p>三條警告：女性與少數族裔受衝擊比例顯著高於白人男性；中階白領（年薪 5-10 萬美元）受衝擊最大；<strong>再培訓的窗口只有 3-5 年</strong>。</p>
+            <div class="pullout">真正的危機不是 AI 取代銀行員，而是「會用 AI 的銀行員」取代「不會用 AI 的銀行員」。</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============== 五大行動建議 ============== -->
+<section class="section sec-actions" id="actions">
+  <div class="section-inner">
+    <div class="section-header reveal">
+      <div class="section-eyebrow">九、應用與延伸思考</div>
+      <h2 class="section-title">五項<span class="accent">具體行動</span>建議</h2>
+      <p class="section-sub">將書中觀點轉為可執行清單。對中型銀行、區域銀行、財管團隊都適用。</p>
+    </div>
+
+    <div class="actions-grid reveal-stagger">
+      <article class="action-card">
+        <div class="action-num">1</div>
+        <div class="action-info">
+          <h4>成立「AI 治理委員會」<br>而非僅是技術委員會</h4>
+          <p>成員應涵蓋<strong>法遵、風控、資訊、業務、HR 五大單位</strong>，而非只由資訊部主導。參考本書 ATEFPSH 七大支柱設計議程，每季檢視所有 AI 用例。</p>
+        </div>
+      </article>
+      <article class="action-card">
+        <div class="action-num">2</div>
+        <div class="action-info">
+          <h4>從「高頻、低風險、可量測」<br>的用例切入</h4>
+          <p>首選：客服語音轉文字 + 對話分析；次選：分行 KPI 儀表板生成式摘要；三選：授信書面審查的初稿草擬（保留人類最終核准）。<strong>避開高爭議用例</strong>。</p>
+        </div>
+      </article>
+      <article class="action-card">
+        <div class="action-num">3</div>
+        <div class="action-info">
+          <h4>投資「客戶 360 資料底座」</h4>
+          <p>2026-2027 年優先整合<strong>核心系統、App、分行、CTI</strong> 四大資料源，建立統一 Customer Data Platform。這是所有未來 AI 用例的地基。</p>
+        </div>
+      </article>
+      <article class="action-card">
+        <div class="action-num">4</div>
+        <div class="action-info">
+          <h4>把 AI 素養列入必修訓練</h4>
+          <p>理專、授信、法遵、分行主管全員必修「AI 原理與風險 8 小時課程」。<strong>讀書會可以當第一炮</strong>。三條再培訓路徑（理專 → 財務健康教練、客服 → 體驗設計師、授信 → 模型監督員）今年底前完成全員盤點。</p>
+        </div>
+      </article>
+      <article class="action-card">
+        <div class="action-num">5</div>
+        <div class="action-info">
+          <h4>與 2 家核心 AI 供應商建立戰略夥伴關係</h4>
+          <p>不追求用最多家廠商，而是找 <strong>2 家（1 家國際大廠 + 1 家在地廠）</strong>深度合作，把資料治理、模型調校、合規機制建構起來。作者明確指出：金融 AI 不是一次性採購，是長期共營關係。同時參考 Google AI Opportunity Fund 模式，與大學/職訓局合作建立「在地 AI 培訓基地」。</p>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ============== 一句話總結 ============== -->
+<section class="sec-quote" id="conclusion">
+  <div class="sec-quote-inner">
+    <div class="big">
+      AI 不會取代銀行，但會取代「不會用 AI 的銀行」。<br>
+      不必跑第一，但要跑在會跌倒之前起身的位置。
+    </div>
+    <div class="zh">
+      銀行是「信任業」，AI 是「可能性業」。<br>
+      把可能性放進信任的框架裡，就是這本書、也是接下來十年的課題。
+    </div>
+    <div class="by">— 一句話總結</div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-quote">
+    "Technology is neutral. The outcomes are not."<br>
+    技術是中立的，但結果從來不是。
+  </div>
+  <div class="footer-tags">
+    <span>金融AI</span><span>讀書心得</span><span>負責任 AI</span><span>Theodora Lau</span><span>2026</span>
+  </div>
+  <div class="footer-meta">
+    互動讀書心得 · 仿照 ChatGPT 版面重製 · 2026-05-08<br>
+    Banking on (Artificial) Intelligence · Palgrave Macmillan / Springer · 2025
+  </div>
+</footer>
+
+<button class="fab-back-top" id="fabTop" aria-label="回到頂部">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 19V5M5 12l7-7 7 7"/></svg>
+</button>
+
+<script>
+// ====== 進度條 ======
+const progress = document.getElementById('progress');
+const nav = document.getElementById('nav');
+const fabTop = document.getElementById('fabTop');
+function onScroll() {
+  const h = document.documentElement.scrollHeight - window.innerHeight;
+  const p = (window.scrollY / h) * 100;
+  progress.style.width = p + '%';
+  nav.classList.toggle('scrolled', window.scrollY > 30);
+  fabTop.classList.toggle('show', window.scrollY > 600);
+}
+window.addEventListener('scroll', onScroll, { passive: true });
+onScroll();
+
+// ====== 漢堡選單 ======
+const navToggle = document.getElementById('navToggle');
+const navLinks = document.getElementById('navLinks');
+navToggle.addEventListener('click', () => navLinks.classList.toggle('open'));
+navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => navLinks.classList.remove('open')));
+
+// ====== 回到頂部 ======
+fabTop.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+
+// ====== 滾動淡入 ======
+const io = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.classList.add('in');
+      io.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.12, rootMargin: '0px 0px -60px 0px' });
+document.querySelectorAll('.reveal, .reveal-stagger').forEach(el => io.observe(el));
+
+// ====== 七大支柱互動 ======
+const orbit = document.getElementById('orbit');
+const detailBox = document.getElementById('pillarDetail');
+orbit.querySelectorAll('.pillar-node').forEach(node => {
+  node.addEventListener('click', () => {
+    const key = node.dataset.pillar;
+    orbit.querySelectorAll('.pillar-node').forEach(n => n.classList.remove('active'));
+    node.classList.add('active');
+    detailBox.querySelectorAll('.pillar-detail-content').forEach(c => c.classList.remove('active'));
+    const target = detailBox.querySelector(`[data-pillar="${key}"]`);
+    if (target) target.classList.add('active');
+  });
+});
+
+// ====== 六大場景 tab ======
+const scenTabs = document.getElementById('scenTabs');
+const scenStage = document.getElementById('scenStage');
+scenTabs.querySelectorAll('.scenario-tab').forEach(t => {
+  t.addEventListener('click', () => {
+    const key = t.dataset.scen;
+    scenTabs.querySelectorAll('.scenario-tab').forEach(x => x.classList.remove('active'));
+    t.classList.add('active');
+    scenStage.querySelectorAll('.scenario-panel').forEach(p => p.classList.remove('active'));
+    const target = scenStage.querySelector(`[data-scen="${key}"]`);
+    if (target) target.classList.add('active');
+  });
+});
+
+// ====== 章節展開 ======
+document.querySelectorAll('.chapter-summary').forEach(s => {
+  s.addEventListener('click', () => s.parentElement.classList.toggle('open'));
+});
+
+// ====== 大數字計數動畫 ======
+function animateNum(el) {
+  const target = parseFloat(el.dataset.target);
+  const suffix = el.dataset.suffix || '';
+  const isFloat = !Number.isInteger(target);
+  const duration = 1500;
+  const start = performance.now();
+  function tick(now) {
+    const t = Math.min((now - start) / duration, 1);
+    const eased = 1 - Math.pow(1 - t, 3);
+    const value = target * eased;
+    let display;
+    if (isFloat) display = value.toFixed(1);
+    else if (target >= 100) display = Math.round(value).toLocaleString();
+    else display = Math.round(value);
+    el.innerHTML = display + `<span class="unit">${suffix}</span>`;
+    if (t < 1) requestAnimationFrame(tick);
+  }
+  requestAnimationFrame(tick);
+}
+const numIO = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      animateNum(e.target);
+      numIO.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.4 });
+document.querySelectorAll('.stat-num[data-target]').forEach(el => numIO.observe(el));
+
+// ====== nav active state ======
+const sections = ['overview','thesis','pillars','scenarios','modes','ch6','ch7','actions'];
+const navAnchors = navLinks.querySelectorAll('a');
+const sectIO = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      navAnchors.forEach(a => a.classList.toggle('active', a.getAttribute('href') === '#' + e.target.id));
+    }
+  });
+}, { rootMargin: '-50% 0px -50% 0px' });
+sections.forEach(id => {
+  const el = document.getElementById(id);
+  if (el) sectIO.observe(el);
+});
+</script>
+
+</body>
+</html>
